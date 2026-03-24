@@ -167,7 +167,7 @@ def run_temporal_variation() -> pd.DataFrame:
 def get_cis_worst_case_power_mw() -> float | None:
     cis_csv = os.path.abspath(os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        '..', 'Harshitas-work',
+        '..', 'Harshithas-work',
         'ModuCIS.-CIS-modeling-main', 'ModuCIS.-CIS-modeling-main',
         'CIS_Model', 'Use_cases', 'sweeps_results_final_cis_model',
         'cis_all_scenes_summary.csv'
