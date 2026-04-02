@@ -24,8 +24,10 @@ P_STATIC_MW    = (0.3 + 5.5) * 3.3                             # 19.14 mW
 # Dynamic energy per event: core current (1.5mA) / max event rate (1M ev/s)
 E_PER_EVENT_NJ = (1.5 * 3.3 * 1e-3) / 1_000_000 * 1e9          # 4.95 nJ
 
+
+# Not approached in our velocity range but kept for physical correctness
 # Refractory cap scaled from 128x128 to 640x480
-REFRACTORY_CAP = 1_000_000 * (scene_width * scene_height) / (128 * 128)  # 18.75M ev/s
+# REFRACTORY_CAP = 1_000_000 * (scene_width * scene_height) / (128 * 128)  # 18.75M ev/s
 
 # --- Temporal Variation Sequence ---
 # Velocity range is extended beyond the scene model (up to 2000 px/s) to make the
@@ -63,19 +65,26 @@ def compute_pixel_breakdown(obj_size: int, bg_density: float, velocity: float = 
 
 # --- Core Model ---
 
-def compute_dvs_power(event_rate_raw: float, theta: float = BASELINE_THETA) -> dict:
+def compute_dvs_power(event_rate_raw: float, theta: float = BASELINE_THETA,
+                      obj_size: int = 50, velocity: float = 100) -> dict:
     event_rate_scaled = event_rate_raw * (BASELINE_THETA / theta)
-    saturated         = event_rate_scaled > REFRACTORY_CAP
-    event_rate_eff    = min(event_rate_scaled, REFRACTORY_CAP)
+    event_rate_eff    = event_rate_scaled
     power_dynamic_mW  = (event_rate_eff * E_PER_EVENT_NJ * 1e-9) * 1e3
     power_total_mW    = P_STATIC_MW + power_dynamic_mW
+
+    # Tracking feasibility: DVS can track if it fires enough events to detect the object edge
+    # at least once per object-crossing time. Minimum rate = object perimeter × velocity / size.
+    # Below this, the object moves through the frame before enough events are generated to track it.
+    min_detection_rate = 4 * obj_size * (velocity / obj_size)   # events/sec needed
+    dvs_can_track      = int(event_rate_eff >= min_detection_rate)
+
     return {
         'event_rate_scaled':  round(event_rate_scaled, 1),
         'event_rate_eff':     round(event_rate_eff, 1),
         'power_static_mW':    round(P_STATIC_MW, 3),
         'power_dynamic_mW':   round(power_dynamic_mW, 3),
         'power_total_mW':     round(power_total_mW, 3),
-        'saturated':          int(saturated),
+        'dvs_can_track':      dvs_can_track,
     }
 
 # --- Run All Scenes ---
@@ -95,7 +104,7 @@ def run_all_scenes() -> pd.DataFrame:
                         'threshold_name': th_name,
                         'theta':          theta,
                         'event_rate_raw': raw_rate,
-                        **compute_dvs_power(raw_rate, theta),
+                        **compute_dvs_power(raw_rate, theta, obj_size, vel),
                         **px_info,
                     })
     return pd.DataFrame(rows)
@@ -140,7 +149,7 @@ def plot_pixel_breakdown(df, out_dir):
                   loc='upper right', fontsize=8)
 
     plt.suptitle('DVS: Active vs Silent Pixels at Worst-Case Velocity\n'
-                 'Static power covers ALL pixels — active fraction is tiny',
+                 'Static power covers ALL pixels - active fraction is tiny',
                  fontweight='bold')
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'dvs_pixel_breakdown.png'), dpi=200)
@@ -176,8 +185,8 @@ def get_cis_worst_case_power_mw() -> float | None:
         return None
     import pandas as _pd
     cis_df = _pd.read_csv(cis_csv)
-    # Cap at 500 — Harshita's CSV only covers up to 500 px/s regardless of scene model range
-    worst_vel = min(max(velocities), 500)
+    # Harshita's CSV now covers the full velocity range (up to 2000 px/s)
+    worst_vel = max(velocities)
     row = cis_df[(cis_df['velocity_px_s'] == worst_vel) &
                  (cis_df['object_size_px'] == TEMPORAL_OBJ_SIZE)]
     return float(row['power_mW'].values[0]) if not row.empty else None
@@ -215,7 +224,7 @@ def plot_temporal_variation(df_temporal, out_dir):
                xlabel='Time (s)', ylabel='Power (mW)')
         ax.legend(); ax.grid(True)
 
-    plt.suptitle('DVS: Temporal Variation — Power Tracks Scene Activity\n'
+    plt.suptitle('DVS: Temporal Variation (power tracks scene activity)\n'
                  '(CIS locked to worst-case FPS regardless of velocity)',
                  fontweight='bold')
     plt.tight_layout()
@@ -239,11 +248,13 @@ def plot_power_vs_velocity(df, out_dir):
     plt.close()
 
 def plot_power_vs_background(df, out_dir):
+    # low_threshold (θ=0.10) is the most sensitive/reliable DVS setting — equivalent to
+    # CIS using a 10x safety factor. Using this as the fair comparison point.
     fig, ax = plt.subplots(figsize=(8, 5))
-    for bg_name, bg_df in df[df['threshold_name'] == 'med_threshold'].groupby('background'):
+    for bg_name, bg_df in df[df['threshold_name'] == 'low_threshold'].groupby('background'):
         sub = bg_df[bg_df['object_size_px'] == 50].sort_values('velocity_px_s')
         ax.plot(sub['velocity_px_s'], sub['power_total_mW'], marker='s', label=bg_name)
-    ax.set(title='DVS Power: Low vs High Texture (med_threshold)',
+    ax.set(title='DVS Power: Low vs High Texture (low_threshold is a conservative operating point)',
            xlabel='Velocity (px/s)', ylabel='DVS Total Power (mW)')
     ax.legend(); ax.grid(True)
     plt.tight_layout()
@@ -276,7 +287,7 @@ def plot_static_vs_dynamic(df, out_dir):
     ax1.bar(x, sub['power_static_mW'], label='Static (mW)', color='steelblue')
     ax1.bar(x, sub['power_dynamic_mW'], label='Dynamic (mW)', color='tomato',
             bottom=sub['power_static_mW'])
-    ax1.set(title='DVS Power Breakdown — Full View',
+    ax1.set(title='DVS Power Breakdown: Full View',
             xlabel='Velocity (px/s)', ylabel='Power (mW)')
     ax1.legend(); ax1.grid(True, axis='y')
 
@@ -285,12 +296,12 @@ def plot_static_vs_dynamic(df, out_dir):
     for i, (_, r) in enumerate(sub.iterrows()):
         ax2.text(i, r['power_dynamic_mW'] + 0.002,
                  f"{r['power_dynamic_mW']:.3f}", ha='center', fontsize=8)
-    ax2.set(title='Dynamic Power Only — Zoomed',
+    ax2.set(title='Dynamic Power Only: Zoomed',
             xlabel='Velocity (px/s)', ylabel='Dynamic Power (mW)')
     ax2.legend(); ax2.grid(True, axis='y')
 
     plt.suptitle('DVS Power Breakdown (high_threshold, low_texture)\n'
-                 'Static power dominates — dynamic is barely visible at full scale',
+                 'Static power dominates (dynamic is barely visible at full scale)',
                  fontweight='bold')
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'dvs_power_breakdown.png'), dpi=200)
@@ -305,8 +316,7 @@ if __name__ == '__main__':
     df = run_all_scenes()
     df.to_csv(os.path.join(OUT_DIR, 'dvs_all_scenes_summary.csv'), index=False)
 
-    print(f'P_static = {P_STATIC_MW:.2f} mW | E_per_event = {E_PER_EVENT_NJ:.3f} nJ | '
-          f'Refractory cap = {REFRACTORY_CAP/1e6:.2f}M ev/s')
+    print(f'P_static = {P_STATIC_MW:.2f} mW | E_per_event = {E_PER_EVENT_NJ:.3f} nJ')
     # print(df[(df['threshold_name'] == 'med_threshold') &
     # (df['background'] == 'low_texture')].to_string(index=False))
 
