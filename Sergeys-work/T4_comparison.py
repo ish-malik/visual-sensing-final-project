@@ -1,10 +1,19 @@
 """
 CIS vs DVS Power Comparison and Design Rules
 Author: Sergey Petrushkevich
-EECE5698 - Visual Sensing and Computing
+EECE5698  Visual Sensing and Computing
 
-Merges CIS (Harshita) and DVS (Ish) model outputs under the shared scene model (Ramaa)
-to produce comparison plots and design rules for object tracking.
+This script merges the CIS model outputs (from Harshita) and the DVS model
+outputs (from Ish) using the shared scene model parameters (from Ramaa).
+It then generates comparison plots and design rules that answer the question:
+"Given a certain scene, which sensor is more power efficient for object tracking?"
+
+The merged dataset covers:
+    126 rows = 7 velocities x 3 object sizes x 2 backgrounds x 3 DVS thresholds
+    Velocities:  10, 50, 100, 200, 500, 1000, 2000 px/s
+    Object sizes: 25, 50, 100 pixels
+    Backgrounds:  low clutter (5% edge density), high clutter (40% edge density)
+    Thresholds:   low (theta=0.10), medium (theta=0.20), high (theta=0.40)
 """
 
 import os
@@ -15,30 +24,37 @@ import matplotlib.ticker as ticker
 import matplotlib.gridspec as gridspec
 from numpy.polynomial.polynomial import polyfit
 
-# figure out where everything lives relative to this script
+
+# ==========================================================================
+# File paths
+# ==========================================================================
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(BASE)
 
-# Ish's DVS sweep results 90 rows covering all scene combos
+# DVS sweep results from Ish's model (126 rows covering all scene combinations)
 DVS_CSV = os.path.join(
     PROJECT, "Ishs-work", "dvs_results", "dvs_all_scenes_summary.csv"
 )
 
-# Harshita's CIS model with background texture factored in 30 rows
+# CIS model results from Harshita (42 rows, full velocity range 10 to 2000 px/s)
 CIS_BG_CSV = os.path.join(
     PROJECT,
-    "Harshitas-work-S26-ModuCIS-modeling-main",
+    "Harshithas-work",
+    "Spring-2026-ModuCIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "CIS_Model",
-    "sweeps_results_final_cis_withbg",
-    "cis_all_scenes_summary_with_bg.csv",
+    "Use_cases",
+    "sweeps_results_final_cis_model",
+    "cis_all_scenes_summary.csv",
 )
 
-# resolution and fps sweeps from Harshita's CIS use-case analysis
+# Resolution and FPS sweeps from Harshita's CIS use case analysis (optional)
 RES_SWEEP_CSV = os.path.join(
     PROJECT,
-    "Harshitas-work-S26-ModuCIS-modeling-main",
+    "Harshithas-work",
+    "Spring-2026-ModuCIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "CIS_Model",
@@ -50,7 +66,8 @@ RES_SWEEP_CSV = os.path.join(
 
 FPS_SWEEP_CSV = os.path.join(
     PROJECT,
-    "Harshitas-work-S26-ModuCIS-modeling-main",
+    "Harshithas-work",
+    "Spring-2026-ModuCIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "ModuCIS.-CIS-modeling-main",
     "CIS_Model",
@@ -60,16 +77,31 @@ FPS_SWEEP_CSV = os.path.join(
     "fps_sweep_detailed.csv",
 )
 
-OUT_DIR = BASE  # output directly into Sergeys-work/
+OUT_DIR = BASE
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# DVS constants from Ish's model
-# the static power is basically fixed bias circuitry always on regardless of activity
-DVS_P_STATIC = 19.14  # mW
-DVS_E_PER_EVENT = 4.95e-9  # J/event tiny cost per brightness change
-DVS_REFRACTORY_CAP = 18.75e6  # max events/s before pixel can't keep up
 
-# make all plots look consistent light gray background with subtle grid
+# ==========================================================================
+# DVS sensor constants (from Ish's model, based on Lichtsteiner 2008)
+# ==========================================================================
+
+# Static power: the bias circuitry that is always on regardless of scene activity.
+# This includes comparators, bias generators, and digital logic per pixel.
+DVS_P_STATIC = 19.14  # milliwatts
+
+# Energy per event: the tiny cost each time a pixel detects a brightness change.
+# Each event is an asynchronous digital address output.
+DVS_E_PER_EVENT = 4.95e-9  # joules per event
+
+# Refractory cap: the maximum event rate the sensor can physically produce.
+# After a pixel fires, it enters a refractory period before it can fire again.
+DVS_REFRACTORY_CAP = 18.75e6  # events per second
+
+
+# ==========================================================================
+# Plot styling
+# ==========================================================================
+
 plt.rcParams.update(
     {
         "font.size": 11,
@@ -84,28 +116,35 @@ plt.rcParams.update(
     }
 )
 
-# blue for CIS, orange for DVS keeps it easy to tell apart
+# Blue for CIS, orange for DVS (consistent across all plots)
 CIS_COLOR = "#1f77b4"
 DVS_COLOR = "#ff7f0e"
+
+# Each object size gets its own color and marker shape
 COLORS_SIZE = {25: "#1f77b4", 50: "#ff7f0e", 100: "#2ca02c"}
 SIZE_MARKERS = {25: "o", 50: "s", 100: "D"}
+
+# Background types (ordered for consistent iteration)
 BG_ORDER = ["low_texture", "high_texture"]
 BG_LABELS = {
-    "low_texture": "Low Texture (plain)",
-    "high_texture": "High Texture (cluttered)",
+    "low_texture": "Low Clutter (plain)",
+    "high_texture": "High Clutter (cluttered)",
 }
-VELOCITIES = [10, 50, 100, 200, 500]
-OBJ_SIZES = [25, 50, 100]
+
+# Scene parameter ranges
+VELOCITIES = [10, 50, 100, 200, 500, 1000, 2000]  # pixels per second
+OBJ_SIZES = [25, 50, 100]  # pixels
 
 
 def save(fig, name):
+    """Save a figure to the output directory and close it."""
     fig.savefig(os.path.join(OUT_DIR, name), dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"  Saved {name}")
 
 
 def add_finding(ax, text, loc="lower right", fontsize=9):
-    """Put a yellow findings box on the plot."""
+    """Place a yellow annotation box with key findings on the plot."""
     box_props = dict(
         boxstyle="round,pad=0.5",
         facecolor="lightyellow",
@@ -135,37 +174,69 @@ def add_finding(ax, text, loc="lower right", fontsize=9):
 
 
 def load_data():
+    """Load DVS and CIS model outputs, merge them on shared scene parameters,
+    and compute derived comparison columns (power ratio, power savings).
+
+    The merge uses object_size_px, velocity_px_s, and background as keys.
+    DVS has 3 threshold variants per scene, so the merged dataset has
+    3x the number of CIS rows (126 = 42 CIS scenes x 3 DVS thresholds).
+
+    Returns: (merged_dataframe, cis_dataframe, res_sweep_or_None, fps_sweep_or_None)
+    """
     dvs = pd.read_csv(DVS_CSV)
     cis = pd.read_csv(CIS_BG_CSV)
-    res_sweep = pd.read_csv(RES_SWEEP_CSV)
-    fps_sweep = pd.read_csv(FPS_SWEEP_CSV)
 
-    # merge on the scene parameters that Ramaa's scene model defined for everyone
-    # DVS has 3 threshold variants per scene so we get 90 rows (30 CIS x 3 thresholds)
+    # The updated CIS CSV has a "fps_clipped" column that is always 1 (broken).
+    # We recompute it from the actual values: the CIS sensor is "clipped" when
+    # the scene requires a higher frame rate than the hardware can deliver.
+    cis["fps_clipped_warning"] = (
+        cis["required_fps"] > cis["max_frame_rate_hz"]
+    ).astype(int)
+    cis["feasible"] = (
+        cis["required_fps"] <= cis["max_frame_rate_hz"]
+    ).astype(int)
+
+    # Resolution and FPS sweep files are optional (may not exist yet)
+    res_sweep, fps_sweep = None, None
+    if os.path.isfile(RES_SWEEP_CSV):
+        res_sweep = pd.read_csv(RES_SWEEP_CSV)
+    else:
+        print(f"  [skip] res_sweep not found: {RES_SWEEP_CSV}")
+    if os.path.isfile(FPS_SWEEP_CSV):
+        fps_sweep = pd.read_csv(FPS_SWEEP_CSV)
+    else:
+        print(f"  [skip] fps_sweep not found: {FPS_SWEEP_CSV}")
+
+    # Merge DVS and CIS on the scene parameters that Ramaa's scene model defines.
+    # This gives us one row per (object_size, velocity, background, threshold) combo.
     merge_keys = ["object_size_px", "velocity_px_s", "background"]
+    cis_columns_to_keep = merge_keys + [
+        "power_mW",           # CIS total power consumption
+        "adc_bits_used",      # ADC resolution used by CIS
+        "feasible",           # 1 if CIS can meet required fps, 0 otherwise
+        "max_frame_rate_hz",  # CIS hardware max frame rate
+        "required_fps",       # frame rate needed to track the object
+        "dynamic_range_dB",   # CIS dynamic range
+        "fps_clipped_warning",  # 1 if required_fps > max_frame_rate_hz
+    ]
     merged = dvs.merge(
-        cis[
-            merge_keys
-            + [
-                "power_mW",
-                "adc_bits_used",
-                "feasible",
-                "max_frame_rate_hz",
-                "required_fps",
-                "dynamic_range_dB",
-                "fps_clipped_warning",
-            ]
-        ],
+        cis[cis_columns_to_keep],
         on=merge_keys,
         how="left",
         suffixes=("_dvs", "_cis"),
     )
+
+    # Rename power columns so it is clear which sensor they belong to
     merged.rename(
         columns={"power_total_mW": "dvs_power_mW", "power_mW": "cis_power_mW"},
         inplace=True,
     )
-    # the ratio tells us "how many times more power does CIS use?"
+
+    # power_ratio: how many times more power CIS uses compared to DVS
+    # Example: ratio of 17 means CIS uses 17x more power than DVS
     merged["power_ratio"] = merged["cis_power_mW"] / merged["dvs_power_mW"]
+
+    # power_savings_mW: absolute milliwatts saved by choosing DVS over CIS
     merged["power_savings_mW"] = merged["cis_power_mW"] - merged["dvs_power_mW"]
 
     merged.to_csv(os.path.join(OUT_DIR, "merged_cis_dvs_data.csv"), index=False)
@@ -173,11 +244,16 @@ def load_data():
     return merged, cis, res_sweep, fps_sweep
 
 
-# Plot 1: CIS vs DVS power overlay
+# ==========================================================================
+# Plot 1: CIS vs DVS Power Overlay
+# Shows total power consumption of each sensor across all velocities.
+# CIS power stays flat (reads all pixels every frame regardless of motion).
+# DVS power rises slightly with velocity (more motion = more events).
+# ==========================================================================
 
 
 def plot1_power_vs_velocity(df):
-    # use medium threshold as the "fair" comparison point for DVS
+    # Use medium threshold (theta=0.20) as the fair comparison point for DVS
     med = df[df["threshold_name"] == "med_threshold"].copy()
     fig, axes = plt.subplots(1, 2, figsize=(16, 7), sharey=True)
 
@@ -189,47 +265,19 @@ def plot1_power_vs_velocity(df):
 
             # shaded gap between CIS and DVS
             ax.fill_between(
-                s["velocity_px_s"],
-                s["dvs_power_mW"],
-                s["cis_power_mW"],
-                alpha=0.06,
-                color=COLORS_SIZE[sz],
+                s["velocity_px_s"], s["dvs_power_mW"], s["cis_power_mW"],
+                alpha=0.06, color=COLORS_SIZE[sz],
             )
             ax.plot(
-                s["velocity_px_s"],
-                s["cis_power_mW"],
-                marker=SIZE_MARKERS[sz],
-                linestyle="-",
-                linewidth=2,
-                color=COLORS_SIZE[sz],
-                markersize=7,
+                s["velocity_px_s"], s["cis_power_mW"],
+                marker=SIZE_MARKERS[sz], linestyle="-", linewidth=2,
+                color=COLORS_SIZE[sz], markersize=7,
                 label=f"CIS obj={sz}px",
             )
-
-            # red X where CIS can't keep up
-            infeas = s[s["feasible"] == 0]
-            if len(infeas):
-                ax.scatter(
-                    infeas["velocity_px_s"],
-                    infeas["cis_power_mW"],
-                    marker="X",
-                    s=150,
-                    c="red",
-                    zorder=6,
-                    linewidths=1.5,
-                    edgecolors="darkred",
-                    label="CIS infeasible" if sz == OBJ_SIZES[0] else "",
-                )
-
             ax.plot(
-                s["velocity_px_s"],
-                s["dvs_power_mW"],
-                marker=SIZE_MARKERS[sz],
-                linestyle="--",
-                linewidth=1.5,
-                color=COLORS_SIZE[sz],
-                alpha=0.8,
-                markersize=6,
+                s["velocity_px_s"], s["dvs_power_mW"],
+                marker=SIZE_MARKERS[sz], linestyle="--", linewidth=1.5,
+                color=COLORS_SIZE[sz], alpha=0.8, markersize=6,
                 label=f"DVS obj={sz}px",
             )
 
@@ -238,55 +286,41 @@ def plot1_power_vs_velocity(df):
         ax.set_yscale("log")
         ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
         ax.yaxis.set_minor_formatter(ticker.NullFormatter())
-        ax.set_yticks([20, 50, 100, 150, 200])
+        ax.set_yticks([20, 50, 100, 150, 200, 350])
 
-        # annotate the gap at v=200 so it's obvious how far apart they are
-        mid_idx = sub[(sub["object_size_px"] == 50) & (sub["velocity_px_s"] == 200)]
+        # annotate the gap at a mid velocity
+        mid_vel = 500
+        mid_idx = sub[(sub["object_size_px"] == 50) & (sub["velocity_px_s"] == mid_vel)]
         if len(mid_idx):
             cis_p = mid_idx["cis_power_mW"].values[0]
             dvs_p = mid_idx["dvs_power_mW"].values[0]
             mid_y = np.sqrt(cis_p * dvs_p)
             ax.annotate(
-                "",
-                xy=(200, dvs_p),
-                xytext=(200, cis_p),
+                "", xy=(mid_vel, dvs_p), xytext=(mid_vel, cis_p),
                 arrowprops=dict(arrowstyle="<->", color="gray", lw=1.5),
             )
-            ax.text(
-                215,
-                mid_y,
-                f"{cis_p/dvs_p:.1f}x\ngap",
-                fontsize=8,
-                color="gray",
-                va="center",
-            )
+            ax.text(mid_vel + 50, mid_y, f"{cis_p/dvs_p:.1f}x\ngap",
+                    fontsize=8, color="gray", va="center")
 
     axes[0].set_ylabel("Power (mW, log scale)")
 
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(
-        handles,
-        labels,
-        loc="upper center",
-        ncol=4,
-        fontsize=9,
-        bbox_to_anchor=(0.5, 0.02),
-        frameon=True,
-        fancybox=True,
+        handles, labels, loc="upper center", ncol=3, fontsize=9,
+        bbox_to_anchor=(0.5, 0.02), frameon=True, fancybox=True,
     )
 
     fig.suptitle(
-        "CIS vs DVS Power for Object Tracking\n(medium contrast threshold, 480x640 resolution)",
-        fontsize=14,
-        fontweight="bold",
+        "CIS vs DVS Power for Object Tracking\n"
+        "(medium contrast threshold, 480x640 resolution)",
+        fontsize=14, fontweight="bold",
     )
 
     add_finding(
         axes[1],
-        "FINDING: DVS uses 6-9x less power\n"
-        "than CIS across all conditions.\n"
-        "The gap is visible at every velocity\n"
-        "and widens for smaller objects.",
+        "DVS uses 6-18x less power than CIS.\n"
+        "Gap widens with velocity and smaller objects.\n"
+        "DVS always tracks; CIS power stays flat.",
         loc="center right",
         fontsize=8,
     )
@@ -295,7 +329,11 @@ def plot1_power_vs_velocity(df):
     save(fig, "plot1_power_vs_velocity.png")
 
 
-# Plot 2: how the CIS/DVS ratio changes with velocity
+# ==========================================================================
+# Plot 2: CIS/DVS Power Ratio vs Velocity
+# If DVS is always cheaper, by how much? This plot shows the multiplier.
+# A ratio of 17 means CIS uses 17x the power that DVS uses.
+# ==========================================================================
 
 
 def plot2_power_ratio(df):
@@ -309,7 +347,7 @@ def plot2_power_ratio(df):
             s = med[
                 (med["background"] == bg) & (med["object_size_px"] == sz)
             ].sort_values("velocity_px_s")
-            bg_short = "low tex" if bg == "low_texture" else "high tex"
+            bg_short = "low clutter" if bg == "low_texture" else "high clutter"
             ax.plot(
                 s["velocity_px_s"],
                 s["power_ratio"],
@@ -321,9 +359,9 @@ def plot2_power_ratio(df):
                 label=f"obj={sz}px, {bg_short}",
             )
 
-    # anything below this line would mean CIS is cheaper spoiler: it never is
+    # Anything below ratio=1 would mean CIS is cheaper. It never happens.
     ax.axhline(y=1, color="red", linestyle=":", alpha=0.6, linewidth=1.5)
-    ax.text(510, 1.1, "Breakeven\n(ratio=1)", fontsize=8, color="red", va="bottom")
+    ax.text(2050, 1.3, "Equal power (ratio = 1)", fontsize=8, color="red", va="bottom")
 
     ax.set_xlabel("Object Velocity (px/s)")
     ax.set_ylabel("Power Ratio (CIS / DVS)")
@@ -331,7 +369,7 @@ def plot2_power_ratio(df):
         "CIS-to-DVS Power Ratio vs Object Velocity\n(ratio > 1 means DVS is more efficient)",
         fontweight="bold",
     )
-    ax.legend(fontsize=8, loc="upper left", ncol=2, framealpha=0.9)
+    ax.legend(fontsize=8, loc="lower left", ncol=2, framealpha=0.9)
 
     add_finding(
         ax,
@@ -347,7 +385,11 @@ def plot2_power_ratio(df):
     save(fig, "plot2_power_ratio.png")
 
 
-# Plot 3: does background texture change the story?
+# ==========================================================================
+# Plot 3: Background Clutter Sensitivity
+# Does a cluttered background (40% edges) change the power comparison?
+# Shows CIS vs DVS power side by side for low and high clutter at each velocity.
+# ==========================================================================
 
 
 def plot3_background_sensitivity(df):
@@ -406,7 +448,7 @@ def plot3_background_sensitivity(df):
         "Background Sensitivity: CIS vs DVS Power\n(obj=50px, medium threshold)",
         fontweight="bold",
     )
-    ax.legend(fontsize=8, loc="upper left", framealpha=0.9)
+    ax.legend(fontsize=8, loc="center left", framealpha=0.9)
 
     add_finding(
         ax,
@@ -422,7 +464,12 @@ def plot3_background_sensitivity(df):
     save(fig, "plot3_background_sensitivity.png")
 
 
-# Plot 4: does DVS threshold matter?
+# ==========================================================================
+# Plot 4: DVS Threshold Sensitivity
+# DVS contrast threshold (theta) controls sensitivity: lower theta means
+# more events (catches faint edges) but also more power. Does it matter?
+# Compares all 3 threshold levels against CIS.
+# ==========================================================================
 
 
 def plot4_threshold_sensitivity(df):
@@ -430,7 +477,7 @@ def plot4_threshold_sensitivity(df):
 
     fig, ax = plt.subplots(figsize=(10, 6.5))
 
-    # theta is the contrast threshold lower = more sensitive = more events = more power
+    # Theta is the contrast threshold. Lower theta = more sensitive = more events = more power.
     thresh_styles = {
         "low_threshold": {
             "color": "#d62728",
@@ -474,13 +521,13 @@ def plot4_threshold_sensitivity(df):
         zorder=5,
     )
 
-    # shade the gap even the worst DVS config is way below CIS
+    # Shade the gap between CIS and worst DVS config to show they never meet
     dvs_max = sub.groupby("velocity_px_s")["dvs_power_mW"].max()
     ax.fill_between(
         cis_vals.index, dvs_max.values, cis_vals.values, alpha=0.08, color="gray"
     )
     ax.text(
-        300,
+        800,
         80,
         "Power gap\n(always > 6x)",
         fontsize=9,
@@ -495,7 +542,7 @@ def plot4_threshold_sensitivity(df):
         "DVS Threshold Sensitivity vs CIS Power\n(obj=50px, low texture background)",
         fontweight="bold",
     )
-    ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
+    ax.legend(fontsize=9, loc="center left", framealpha=0.9)
 
     add_finding(
         ax,
@@ -511,11 +558,14 @@ def plot4_threshold_sensitivity(df):
     save(fig, "plot4_threshold_sensitivity.png")
 
 
-# Plot 5: what if we shrink the CIS resolution?
+# ==========================================================================
+# Plot 5: CIS Resolution Sensitivity
+# What if we shrink the CIS sensor to save power? Can a smaller CIS
+# beat DVS? (Spoiler: no. Even at 240x320 CIS is still 2.9x above DVS.)
+# ==========================================================================
 
 
 def plot5_resolution_sensitivity(res_sweep):
-    # can we just use a smaller CIS to beat DVS? turns out... no
     fig, ax = plt.subplots(figsize=(10, 6.5))
 
     res_labels = [
@@ -582,7 +632,11 @@ def plot5_resolution_sensitivity(res_sweep):
     save(fig, "plot5_resolution_sensitivity.png")
 
 
-# Plot 6: what happens if we push velocity way beyond 500 px/s?
+# ==========================================================================
+# Plot 6: Saturation Extrapolation
+# What happens if we push velocity to 5000 px/s? Do the CIS and DVS
+# power curves ever cross? (No. CIS grows faster, DVS saturates at 112 mW.)
+# ==========================================================================
 
 
 def plot6_saturation_extrapolation(df):
@@ -591,14 +645,14 @@ def plot6_saturation_extrapolation(df):
     ].copy()
 
     fig, ax = plt.subplots(figsize=(11, 7))
-    # push velocity 10x beyond our measured range to see if curves ever cross
+    # Push velocity well beyond our measured range to see if curves ever cross
     vel_extrap = np.linspace(10, 5000, 500)
 
     for bg in BG_ORDER:
         sub = med[med["background"] == bg].sort_values("velocity_px_s")
         ls = "-" if bg == "low_texture" else "--"
         lw = 2.5 if bg == "low_texture" else 2.0
-        bg_short = "low tex" if bg == "low_texture" else "high tex"
+        bg_short = "low clutter" if bg == "low_texture" else "high clutter"
 
         # fit a line to the measured points and extrapolate
         coeffs = polyfit(sub["velocity_px_s"], sub["event_rate_scaled"], 1)
@@ -646,7 +700,7 @@ def plot6_saturation_extrapolation(df):
             linewidths=1,
         )
 
-    # even if every pixel fires at max rate, DVS tops out here
+    # Even if every pixel fires at max rate, DVS power tops out here
     dvs_max_power = DVS_P_STATIC + DVS_REFRACTORY_CAP * DVS_E_PER_EVENT * 1e3
     ax.axhline(
         y=dvs_max_power,
@@ -657,16 +711,16 @@ def plot6_saturation_extrapolation(df):
         label=f"DVS saturation cap ({dvs_max_power:.0f} mW)",
     )
 
-    ax.axvline(x=500, color="gray", linestyle=":", alpha=0.5, linewidth=1.5)
+    ax.axvline(x=2000, color="gray", linestyle=":", alpha=0.5, linewidth=1.5)
     ax.annotate(
         "Measured\nrange",
-        xy=(500, 30),
+        xy=(2000, 30),
         fontsize=8,
         color="gray",
         ha="right",
         va="bottom",
     )
-    ax.axvspan(500, 5000, alpha=0.04, color="gray")
+    ax.axvspan(2000, 5000, alpha=0.04, color="gray")
 
     ax.set_xlabel("Object Velocity (px/s)")
     ax.set_ylabel("Power (mW)")
@@ -674,7 +728,7 @@ def plot6_saturation_extrapolation(df):
         "Extrapolated CIS vs DVS Power Beyond Measured Range\n(obj=50px, med threshold)",
         fontweight="bold",
     )
-    ax.legend(fontsize=8, loc="upper left", framealpha=0.9)
+    ax.legend(fontsize=8, loc="center left", framealpha=0.9)
 
     add_finding(
         ax,
@@ -691,21 +745,28 @@ def plot6_saturation_extrapolation(df):
     save(fig, "plot6_saturation_extrapolation.png")
 
 
-# Plot 7: heatmap of CIS/DVS ratio across all conditions --
+# ==========================================================================
+# Plot 7: Design Rule Heatmap
+# Full matrix of CIS/DVS power ratio for every velocity x object size combo.
+# Darker green = bigger DVS advantage. Hatched cells = CIS cannot keep up.
+# ==========================================================================
 
 
 def plot7_design_rule_heatmap(df):
     med = df[df["threshold_name"] == "med_threshold"].copy()
 
-    fig = plt.figure(figsize=(16, 7))
+    fig = plt.figure(figsize=(16, 10))
     gs = gridspec.GridSpec(1, 3, width_ratios=[1, 1, 0.05], wspace=0.3)
     ax1 = fig.add_subplot(gs[0])
     ax2 = fig.add_subplot(gs[1])
     cax = fig.add_subplot(gs[2])
 
-    # keep color scale consistent across both heatmaps
-    vmin = med["power_ratio"].min() - 0.3
-    vmax = med["power_ratio"].max() + 0.3
+    # use a sequential green colormap: higher ratio = darker green = better DVS advantage
+    # avoids confusing white/yellow mid-tones
+    import matplotlib.colors as mcolors
+    cmap = plt.cm.YlGn
+    vmin = 8
+    vmax = 20
 
     for ax, bg in zip([ax1, ax2], BG_ORDER):
         sub = med[med["background"] == bg]
@@ -717,7 +778,7 @@ def plot7_design_rule_heatmap(df):
         )
         pivot = pivot.sort_index(ascending=True)
 
-        im = ax.imshow(pivot.values, cmap="RdYlGn", aspect="auto", vmin=vmin, vmax=vmax)
+        im = ax.imshow(pivot.values, cmap=cmap, aspect="auto", vmin=vmin, vmax=vmax)
 
         ax.set_xticks(range(len(pivot.columns)))
         ax.set_xticklabels([f"{c}px" for c in pivot.columns])
@@ -735,7 +796,7 @@ def plot7_design_rule_heatmap(df):
                 row = sub[(sub["velocity_px_s"] == vel) & (sub["object_size_px"] == sz)]
                 cis_p = row["cis_power_mW"].values[0]
                 dvs_p = row["dvs_power_mW"].values[0]
-                txt_color = "white" if val > 7.5 else "black"
+                txt_color = "white" if val > 16 else "black"
                 ax.text(
                     j,
                     i - 0.15,
@@ -757,27 +818,23 @@ def plot7_design_rule_heatmap(df):
                     alpha=0.8,
                 )
 
-        # X on cells where CIS can't meet required FPS
-        infeas = sub[sub["feasible"] == 0][
+        # hatched overlay on cells where CIS can't meet required FPS
+        from matplotlib.patches import Rectangle
+        infeas = sub[sub["fps_clipped_warning"] == 1][
             ["velocity_px_s", "object_size_px"]
         ].drop_duplicates()
         for _, row in infeas.iterrows():
             vel_idx = list(pivot.index).index(row["velocity_px_s"])
             sz_idx = list(pivot.columns).index(row["object_size_px"])
-            ax.plot(
-                sz_idx,
-                vel_idx,
-                "X",
-                color="red",
-                markersize=16,
-                markeredgecolor="darkred",
-                markeredgewidth=1.5,
-                zorder=5,
-            )
+            rect = Rectangle((sz_idx - 0.5, vel_idx - 0.5), 1, 1,
+                              fill=False, hatch="///", edgecolor="#d62728",
+                              linewidth=1.5, zorder=5, alpha=0.6)
+            ax.add_patch(rect)
 
-    fig.colorbar(im, cax=cax, label="CIS/DVS Power Ratio")
+    fig.colorbar(im, cax=cax, label="CIS/DVS Power Ratio (higher = DVS wins more)")
     fig.suptitle(
-        "CIS/DVS Power Ratio Heatmap  |  Higher = DVS more efficient  |  X = CIS infeasible",
+        "CIS/DVS Power Ratio Heatmap  |  Higher = DVS more efficient\n"
+        "Hatched cells = CIS cannot meet required frame rate",
         fontsize=13,
         fontweight="bold",
         y=0.98,
@@ -786,11 +843,15 @@ def plot7_design_rule_heatmap(df):
     save(fig, "plot7_design_rule_heatmap.png")
 
 
-# Plot 8: where does each sensor's power actually go?
+# ==========================================================================
+# Plot 8: Power Breakdown
+# Where does each sensor's power actually go? DVS is 97% static (bias
+# circuits always on) with negligible dynamic cost per event. CIS must
+# read all 307,200 pixels through PGA + ADC every single frame.
+# ==========================================================================
 
 
 def plot8_power_breakdown(df):
-    # shows WHY DVS wins: it's almost all static power, barely any dynamic cost
     med = (
         df[
             (df["threshold_name"] == "med_threshold")
@@ -881,7 +942,7 @@ def plot8_power_breakdown(df):
         "(obj=50px, low texture, med threshold)",
         fontweight="bold",
     )
-    ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
+    ax.legend(fontsize=9, loc="center left", framealpha=0.9)
 
     add_finding(
         ax,
@@ -897,20 +958,26 @@ def plot8_power_breakdown(df):
     save(fig, "plot8_power_breakdown.png")
 
 
-# Plot 9: where does CIS fail to keep up?
+# ==========================================================================
+# Plot 9: CIS Feasibility Map
+# At which velocities and object sizes can CIS actually track?
+# Green = CIS can meet the required fps. Red = CIS hardware limit exceeded.
+# DVS is always feasible (no frame rate constraint, event driven).
+# ==========================================================================
 
 
 def plot9_feasibility_map(df):
-    # CIS can't always keep up high FPS requirements exceed its readout speed
     med = df[df["threshold_name"] == "med_threshold"].copy()
-    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(16, 10))
+
+    from matplotlib.patches import Rectangle
 
     for ax, bg in zip(axes, BG_ORDER):
         sub = med[med["background"] == bg]
-        pivot_feasible = sub.pivot_table(
+        pivot_clipped = sub.pivot_table(
             index="velocity_px_s",
             columns="object_size_px",
-            values="feasible",
+            values="fps_clipped_warning",
             aggfunc="first",
         ).sort_index()
         pivot_fps = sub.pivot_table(
@@ -926,70 +993,65 @@ def plot9_feasibility_map(df):
             aggfunc="first",
         ).sort_index()
 
-        colors = np.where(pivot_feasible.values == 1, 0.7, 0.2)
+        # color: green for feasible, red for clipped
+        colors = np.where(pivot_clipped.values == 0, 0.75, 0.15)
         ax.imshow(colors, cmap="RdYlGn", aspect="auto", vmin=0, vmax=1)
 
-        ax.set_xticks(range(len(pivot_feasible.columns)))
-        ax.set_xticklabels([f"{c}px" for c in pivot_feasible.columns])
-        ax.set_yticks(range(len(pivot_feasible.index)))
-        ax.set_yticklabels([f"{v} px/s" for v in pivot_feasible.index])
+        ax.set_xticks(range(len(pivot_clipped.columns)))
+        ax.set_xticklabels([f"{c}px" for c in pivot_clipped.columns])
+        ax.set_yticks(range(len(pivot_clipped.index)))
+        ax.set_yticklabels([f"{v} px/s" for v in pivot_clipped.index])
         ax.set_xlabel("Object Size")
         ax.set_ylabel("Velocity")
 
         max_fps = pivot_max.values[0, 0]
         ax.set_title(
-            f"{BG_LABELS[bg]}\nCIS max FPS: {max_fps:.0f} Hz", fontweight="bold"
+            f"{BG_LABELS[bg]}\nCIS hardware limit: {max_fps:.0f} fps", fontweight="bold"
         )
 
-        for i in range(len(pivot_feasible.index)):
-            for j in range(len(pivot_feasible.columns)):
+        for i in range(len(pivot_clipped.index)):
+            for j in range(len(pivot_clipped.columns)):
                 req = pivot_fps.values[i, j]
-                feas = pivot_feasible.values[i, j]
-                status = "CIS OK" if feas else "CIS FAIL"
-                txt_color = "darkgreen" if feas else "darkred"
-                ax.text(
-                    j,
-                    i - 0.15,
-                    f"Need: {req:.0f} FPS",
-                    ha="center",
-                    va="center",
-                    fontsize=9,
-                    fontweight="bold",
-                    color=txt_color,
-                )
-                ax.text(
-                    j,
-                    i + 0.2,
-                    status,
-                    ha="center",
-                    va="center",
-                    fontsize=10,
-                    fontweight="bold",
-                    color=txt_color,
-                )
+                clipped = pivot_clipped.values[i, j]
+                if clipped:
+                    status = f"NEED {req:.0f} fps"
+                    detail = f"CIS cannot track"
+                    txt_color = "white"
+                    # hatching for infeasible
+                    rect = Rectangle((j - 0.5, i - 0.5), 1, 1,
+                                     fill=False, hatch="///", edgecolor="white",
+                                     linewidth=0.8, alpha=0.4)
+                    ax.add_patch(rect)
+                else:
+                    status = f"Need {req:.0f} fps"
+                    detail = "CIS OK"
+                    txt_color = "darkgreen"
+                ax.text(j, i - 0.15, status, ha="center", va="center",
+                        fontsize=8, fontweight="bold", color=txt_color)
+                ax.text(j, i + 0.2, detail, ha="center", va="center",
+                        fontsize=9, fontweight="bold", color=txt_color)
 
-        ax.text(
-            0.5,
-            -0.18,
-            "DVS: Always feasible (no frame rate constraint)",
-            transform=ax.transAxes,
-            ha="center",
-            fontsize=9,
-            color=DVS_COLOR,
-            fontweight="bold",
-        )
+        ax.text(0.5, -0.12,
+                "DVS: always feasible (event-driven, no frame rate constraint)",
+                transform=ax.transAxes, ha="center", fontsize=9,
+                color=DVS_COLOR, fontweight="bold",
+                bbox=dict(facecolor="lightyellow", edgecolor=DVS_COLOR,
+                          alpha=0.8, boxstyle="round,pad=0.3"))
 
     fig.suptitle(
-        "CIS Feasibility Map: Can the sensor track the object?\n"
-        "(Green = CIS meets required FPS, Red = CIS cannot keep up)",
-        fontsize=13,
-        fontweight="bold",
+        "CIS Feasibility Map: Can the sensor keep up?\n"
+        "Green = CIS meets required fps  |  Red/hatched = CIS fps clipped by hardware",
+        fontsize=13, fontweight="bold",
     )
-    fig.tight_layout(rect=[0, 0.02, 1, 0.92])
+    fig.tight_layout(rect=[0, 0.02, 1, 0.90])
     save(fig, "plot9_feasibility_map.png")
 
 
-# Plot 10: one-page summary for presentations
+# ==========================================================================
+# Plot 10: Executive Summary Dashboard
+# One page summary combining power ranges, ratio by background, savings,
+# heatmap, feasibility pie chart, and design rule text box.
+# ==========================================================================
 
 
 def plot10_summary_dashboard(df, stats):
@@ -1007,7 +1069,7 @@ def plot10_summary_dashboard(df, stats):
         2, 3, hspace=0.4, wspace=0.35, left=0.06, right=0.94, top=0.90, bottom=0.08
     )
 
-    # A: show the raw power numbers side by side
+    # Panel A: raw power numbers side by side
     ax_a = fig.add_subplot(gs[0, 0])
     categories = ["CIS\n(min)", "CIS\n(max)", "DVS\n(min)", "DVS\n(max)"]
     values = [
@@ -1033,7 +1095,7 @@ def plot10_summary_dashboard(df, stats):
     ax_a.set_ylabel("Power (mW)")
     ax_a.set_title("A. Power Ranges", fontweight="bold")
 
-    # B: does background texture change the story? (not really)
+    # Panel B: does background clutter change the story? (not really)
     ax_b = fig.add_subplot(gs[0, 1])
     low_ratio = med[med["background"] == "low_texture"]["power_ratio"].mean()
     high_ratio = med[med["background"] == "high_texture"]["power_ratio"].mean()
@@ -1057,7 +1119,7 @@ def plot10_summary_dashboard(df, stats):
     ax_b.set_title("B. Avg Ratio by Background", fontweight="bold")
     ax_b.axvline(x=1, color="red", linestyle=":", alpha=0.4)
 
-    # C: the actual mW you'd save this is what matters for battery life
+    # Panel C: the actual milliwatts you would save (matters for battery life)
     ax_c = fig.add_subplot(gs[0, 2])
     sub50 = med[(med["object_size_px"] == 50) & (med["background"] == "low_texture")]
     sub50 = sub50.sort_values("velocity_px_s")
@@ -1077,7 +1139,7 @@ def plot10_summary_dashboard(df, stats):
     ax_c.set_ylabel("Power Saved (mW)")
     ax_c.set_title("C. Power Savings Using DVS", fontweight="bold")
 
-    # D: compact version of the full heatmap for the summary page
+    # Panel D: compact version of the full heatmap
     ax_d = fig.add_subplot(gs[1, 0])
     sub_low = med[med["background"] == "low_texture"]
     pivot = sub_low.pivot_table(
@@ -1093,7 +1155,7 @@ def plot10_summary_dashboard(df, stats):
     ax_d.set_yticklabels([f"{v}" for v in pivot.index])
     ax_d.set_xlabel("Object Size")
     ax_d.set_ylabel("Velocity (px/s)")
-    ax_d.set_title("D. Ratio Heatmap (low tex)", fontweight="bold")
+    ax_d.set_title("D. Ratio Heatmap (low clutter)", fontweight="bold")
     for i in range(len(pivot.index)):
         for j in range(len(pivot.columns)):
             ax_d.text(
@@ -1107,7 +1169,7 @@ def plot10_summary_dashboard(df, stats):
                 color="white" if pivot.values[i, j] > 7.5 else "black",
             )
 
-    # E: CIS can't even do the job in some cases DVS always can
+    # Panel E: CIS feasibility (DVS always feasible)
     ax_e = fig.add_subplot(gs[1, 1])
     n_total = len(
         med[["object_size_px", "velocity_px_s", "background"]].drop_duplicates()
@@ -1130,7 +1192,7 @@ def plot10_summary_dashboard(df, stats):
         t.set_fontweight("bold")
     ax_e.set_title("E. CIS Feasibility\n(DVS: 30/30 feasible)", fontweight="bold")
 
-    # F: the bottom line what an engineer should take away from all this
+    # Panel F: design rule takeaway for engineers
     ax_f = fig.add_subplot(gs[1, 2])
     ax_f.axis("off")
     rule_text = (
@@ -1167,7 +1229,11 @@ def plot10_summary_dashboard(df, stats):
     save(fig, "plot10_summary_dashboard.png")
 
 
-# Crossover analysis
+# ==========================================================================
+# Crossover Analysis
+# Is there any operating point where CIS becomes cheaper than DVS?
+# We check velocity extrapolation and resolution reduction.
+# ==========================================================================
 
 
 def crossover_analysis(df, res_sweep):
@@ -1180,7 +1246,7 @@ def crossover_analysis(df, res_sweep):
     min_row = med.loc[ratios.idxmin()]
     max_row = med.loc[ratios.idxmax()]
 
-    # try to find where CIS and DVS power curves would cross (they don't)
+    # Try to find where CIS and DVS power curves would cross (they don't)
     sub = med[
         (med["object_size_px"] == 50) & (med["background"] == "low_texture")
     ].sort_values("velocity_px_s")
@@ -1195,7 +1261,7 @@ def crossover_analysis(df, res_sweep):
         (dvs_a - cis_coeffs[0]) / denom if abs(denom) > 1e-12 else float("inf")
     )
 
-    # what if we shrink the CIS sensor until its power matches DVS?
+    # What if we shrink the CIS sensor until its power matches DVS?
     res_coeffs = polyfit(
         res_sweep["total_pixels"], res_sweep["system_total_power_attr_mW"], 1
     )
@@ -1272,7 +1338,10 @@ def crossover_analysis(df, res_sweep):
     }
 
 
-# Design rule text output
+# ==========================================================================
+# Design Rule Text Output
+# Writes a human readable summary of the CIS vs DVS comparison to a file.
+# ==========================================================================
 
 
 def design_rule(df, stats):
@@ -1342,6 +1411,124 @@ CROSSOVER CONDITIONS:
     print(text)
 
 
+# ==========================================================================
+# Plot 11: Background Activity Sensitivity
+# In the real world backgrounds are never perfectly static. Wind, people,
+# lighting flicker all generate DVS events that cost power but carry no
+# tracking information. This plot models that as a "background activity"
+# percentage and shows how the power ratio and breakdown change.
+# CIS is unaffected because it reads all pixels regardless.
+# ==========================================================================
+
+
+def plot11_background_activity_power(df):
+    """Model independent background motion (wind, people, flicker) as additional
+    DVS events. Shows how the CIS/DVS power ratio erodes with background activity
+    and where that extra DVS power goes in the breakdown."""
+    med = df[(df["threshold_name"] == "med_threshold") &
+             (df["object_size_px"] == 50)].copy()
+
+    n_pixels = 307200
+    dvs_e_per_ev = DVS_E_PER_EVENT
+    dvs_refrac = DVS_REFRACTORY_CAP
+    bg_pcts = np.array([0, 0.5, 1, 2, 5, 10, 20, 50])
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
+
+    # ── Left: Power ratio vs background activity ──
+    for bg in BG_ORDER:
+        bg_df = med[med["background"] == bg].sort_values("velocity_px_s")
+        bg_short = "low clutter" if bg == "low_texture" else "high clutter"
+        for vel in [50, 500, 2000]:
+            row = bg_df[bg_df["velocity_px_s"] == vel]
+            if row.empty:
+                continue
+            row = row.iloc[0]
+            obj_events = row["event_rate_eff"]
+            cis_pwr = row["cis_power_mW"]
+
+            ratios = []
+            for bg_pct in bg_pcts:
+                bg_events = (bg_pct / 100) * n_pixels * 10
+                total = min(obj_events + bg_events, dvs_refrac)
+                dvs_pwr = DVS_P_STATIC + total * dvs_e_per_ev * 1e3
+                ratios.append(cis_pwr / dvs_pwr)
+
+            ls = "-" if bg == "low_texture" else "--"
+            ax1.plot(bg_pcts, ratios, f"o{ls}", linewidth=2, markersize=5,
+                     label=f"{bg_short}, v={vel}")
+
+    ax1.set_xlabel("Background Activity (%)\n"
+                   "(0% = static, 5% = busy indoor, 50% = extreme)")
+    ax1.set_ylabel("CIS / DVS Power Ratio")
+    ax1.set_title("Power Ratio vs Background Activity\n"
+                   "(ratio > 1 = DVS wins)", fontweight="bold")
+    ax1.legend(fontsize=8, loc="upper right", ncol=2)
+    ax1.set_ylim(0, max(ax1.get_ylim()[1], 20))
+
+    add_finding(ax1,
+                "Even at 50% background activity,\n"
+                "DVS is still 9-12x more efficient.\n"
+                "Ratio never drops below 3x\n"
+                "(DVS saturation cap = 112 mW).",
+                loc="center left")
+
+    # ── Right: Power breakdown at different bg activity levels ──
+    # Show where DVS power goes: static + object events + bg noise events
+    row = med[(med["background"] == "low_texture") &
+              (med["velocity_px_s"] == 500)].iloc[0]
+    obj_events = row["event_rate_eff"]
+    cis_pwr = row["cis_power_mW"]
+
+    selected_bg = [0, 2, 10, 50]
+    x = np.arange(len(selected_bg))
+    width = 0.35
+
+    static_pwr = np.full(len(selected_bg), DVS_P_STATIC)
+    obj_dyn_pwr = np.full(len(selected_bg), obj_events * dvs_e_per_ev * 1e3)
+    bg_dyn_pwr = []
+    for bg_pct in selected_bg:
+        bg_ev = (bg_pct / 100) * n_pixels * 10
+        bg_dyn_pwr.append(min(bg_ev, dvs_refrac - obj_events) * dvs_e_per_ev * 1e3)
+    bg_dyn_pwr = np.array(bg_dyn_pwr)
+
+    # DVS stacked bars
+    ax2.bar(x - width/2, static_pwr, width, label="DVS static (bias)",
+            color="#ff7f0e", alpha=0.9)
+    ax2.bar(x - width/2, obj_dyn_pwr, width, bottom=static_pwr,
+            label="DVS dynamic (object)", color="#ffbb78", alpha=0.9)
+    ax2.bar(x - width/2, bg_dyn_pwr, width, bottom=static_pwr + obj_dyn_pwr,
+            label="DVS dynamic (bg noise)", color="#d62728", alpha=0.7)
+
+    # CIS bar
+    ax2.bar(x + width/2, [cis_pwr]*len(selected_bg), width,
+            label="CIS total", color=CIS_COLOR, alpha=0.9)
+
+    # labels
+    for i, bg_pct in enumerate(selected_bg):
+        total_dvs = static_pwr[i] + obj_dyn_pwr[i] + bg_dyn_pwr[i]
+        ratio = cis_pwr / total_dvs
+        ax2.text(i - width/2, total_dvs + 5, f"{total_dvs:.0f} mW",
+                 ha="center", fontsize=8, fontweight="bold", color=DVS_COLOR)
+        ax2.text(i, cis_pwr/2, f"{ratio:.0f}x", ha="center",
+                 fontsize=11, fontweight="bold", color="white")
+
+    ax2.set_xticks(x)
+    ax2.set_xticklabels([f"{p}%\n{'static' if p==0 else 'busy' if p<=5 else 'active' if p<=20 else 'extreme'}"
+                          for p in selected_bg])
+    ax2.set_xlabel("Background Activity Level")
+    ax2.set_ylabel("Power (mW)")
+    ax2.set_title("Power Breakdown: Where Does Background Noise Power Go?\n"
+                   "(obj=50px, v=500 px/s, low texture)", fontweight="bold")
+    ax2.legend(fontsize=8, loc="upper right")
+
+    fig.suptitle("Background Activity Sensitivity: CIS vs DVS Power\n"
+                 "Red = additional DVS power from background motion events",
+                 fontsize=14, fontweight="bold", y=1.0)
+    plt.tight_layout()
+    save(fig, "plot11_background_activity.png")
+
+
 def main():
     # load everything, merge CIS + DVS on shared scene params, then generate all outputs
     merged, cis, res_sweep, fps_sweep = load_data()
@@ -1349,14 +1536,19 @@ def main():
     plot2_power_ratio(merged)
     plot3_background_sensitivity(merged)
     plot4_threshold_sensitivity(merged)
-    plot5_resolution_sensitivity(res_sweep)
+    if res_sweep is not None:
+        plot5_resolution_sensitivity(res_sweep)
     plot6_saturation_extrapolation(merged)
     plot7_design_rule_heatmap(merged)
     plot8_power_breakdown(merged)
     plot9_feasibility_map(merged)
-    stats = crossover_analysis(merged, res_sweep)
-    plot10_summary_dashboard(merged, stats)
-    design_rule(merged, stats)
+    plot11_background_activity_power(merged)
+    if res_sweep is not None:
+        stats = crossover_analysis(merged, res_sweep)
+        plot10_summary_dashboard(merged, stats)
+        design_rule(merged, stats)
+    else:
+        print("  [skip] plots 5, 10, crossover, design_rule (no res_sweep data)")
 
 
 if __name__ == "__main__":
