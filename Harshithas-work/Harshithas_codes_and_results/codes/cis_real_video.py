@@ -2,8 +2,7 @@
 # Harshitha — CIS Noise Model on Real MOT17 Video
 # Team 4: CIS vs DVS Co-Design for Object Tracking
 #
-# Professor feedback: Compare clean CIS vs noisy CIS side by side
-# on real video — same as Ishita did for DVS
+
 #
 # 4 panel visualization:
 #   Panel 1 — Original MOT17 frame (colour)    ← what human sees
