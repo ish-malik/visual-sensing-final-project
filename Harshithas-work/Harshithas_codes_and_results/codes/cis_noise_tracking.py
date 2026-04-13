@@ -14,11 +14,11 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
 # ── Path setup ─────────────────────────────────────────────────────────────
-# All Sergey's files copied into this folder — no cross-folder imports needed
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-# ── Import Sergey's pipeline ───────────────────────────────────────────────
+# ── Import pipeline ───────────────────────────────────────────────
 try:
     from ingest_mot import load_seqinfo, iter_frames, load_gt
     from cis_detector import MOG2Detector
