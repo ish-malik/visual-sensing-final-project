@@ -2,16 +2,7 @@
 # Harshitha — ModuCIS (Conventional CIS + SAR ADC)
 # Team 4: CIS vs DVS Co-Design for Object Tracking
 #
-# CIS power is CONSTANT — locked to worst-case FPS regardless of velocity.
-#
-# PART 1  — Full scene analysis (all velocities + object sizes from Ramaa)
-#            5 CSVs + 7 plots
-#
-# PART 1B — Animation scene analysis (velocities_viz only from Ramaa)
-#            4 CSVs + 7 plots
-#
-# PART 2  — Camera vs CIS snapshot animation
-#            Interactive window + GIF/MP4 + event rate vs power plot
+
 
 import os, sys, re, io, math
 from contextlib import redirect_stdout
