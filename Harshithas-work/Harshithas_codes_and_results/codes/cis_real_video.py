@@ -1,17 +1,7 @@
 # cis_real_video.py
 # Harshitha — CIS Noise Model on Real MOT17 Video
 # Team 4: CIS vs DVS Co-Design for Object Tracking
-#
 
-#
-# 4 panel visualization:
-#   Panel 1 — Original MOT17 frame (colour)    ← what human sees
-#   Panel 2 — Clean CIS (grayscale, no noise)  ← what CIS captures ideally
-#   Panel 3 — Noisy CIS (grayscale, with noise)← what CIS physically captures
-#   Panel 4 — Difference map (heatmap + gray)  ← where noise deviated from clean
-#
-# Noise sources modeled:
-#   Read noise, Shot noise, FPN, Dark current
 
 import os, sys
 import numpy as np
