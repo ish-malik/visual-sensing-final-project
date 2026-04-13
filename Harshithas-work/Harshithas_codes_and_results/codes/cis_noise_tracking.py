@@ -4,19 +4,7 @@
 #
 # Answers: Does CIS noise hurt tracking performance?
 # Connects ModuCIS noise model to Sergey's tracking pipeline.
-#
-# Method:
-#   1. Run Sergey's CIS tracking on CLEAN frames  → MOTA, IDF1, ID switches
-#   2. Run Sergey's CIS tracking on NOISY frames  → MOTA, IDF1, ID switches
-#   3. Compare: how much does noise degrade tracking?
-#   4. Plot results — power vs accuracy for clean vs noisy CIS
-#
-# Outputs (saved to cis_noise_tracking_results/):
-#   cis_nt_accuracy_comparison.png   — MOTA/IDF1 clean vs noisy bar chart
-#   cis_nt_power_vs_accuracy.png     — power vs MOTA scatter
-#   cis_nt_detections_over_time.png  — detections per frame clean vs noisy
-#   cis_nt_summary_table.png         — full metrics table
-#   cis_nt_results.csv               — raw results for Sergey
+
 
 import os, sys, time
 import numpy as np
