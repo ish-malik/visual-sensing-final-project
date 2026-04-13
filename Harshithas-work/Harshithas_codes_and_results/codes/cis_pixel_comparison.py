@@ -1,19 +1,7 @@
 # cis_pixel_comparison.py
 # Harshitha — CIS Pixel-by-Pixel Comparison on Real MOT17 Video
 # Team 4: CIS vs DVS Co-Design for Object Tracking
-#
-# Professor feedback: Pixel by pixel comparison of:
-#   - Original MOT17 frame (what human sees)
-#   - Clean CIS capture (grayscale, no noise)
-#   - Noisy CIS capture (grayscale, with noise)
-#
-# Outputs:
-#   cis_pixel_results/
-#     cis_px_scatter.png         — pixel values: original vs clean vs noisy scatter
-#     cis_px_histogram.png       — distribution of pixel values all three
-#     cis_px_error_histogram.png — distribution of noise error (noisy - clean)
-#     cis_px_zoom_grid.png       — zoomed pixel grid showing exact values
-#     cis_px_stats_table.png     — summary stats table per region
+
 
 import os, sys
 import numpy as np
