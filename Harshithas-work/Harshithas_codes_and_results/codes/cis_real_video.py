@@ -14,7 +14,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-# ── Import Sergey's MOT17 loader ───────────────────────────────────────────
+# ── Import  MOT17 loader ───────────────────────────────────────────
 try:
     from ingest_mot import load_seqinfo, iter_frames
     print("[OK] Imported ingest_mot.py")
