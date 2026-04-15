@@ -10,7 +10,7 @@ import cv2
 
 SCENE_MODEL_PATH = os.path.abspath(os.path.join(
     os.path.dirname(__file__),
-    '..', 'Remaas-work'
+    '..', '..', 'Ramaas-work'
 ))
 sys.path.insert(0, SCENE_MODEL_PATH)
 
