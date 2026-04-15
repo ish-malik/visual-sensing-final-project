@@ -1,0 +1,1009 @@
+sensor_name,sensor_type,velocity_px_s,obj_size_px,bg_density,bg_label,operating_point,theta,fps_used,event_rate_ev_s,power_mw,power_static_mw,power_dynamic_mw,saturated,resolution,sensor_price
+OV7251 (OmniVision),CIS,10,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,25,0.05,low_texture,adaptive,,4.0,,3.2667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,25,0.05,low_texture,adaptive,,4.0,,34.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,25,0.05,low_texture,adaptive,,4.0,,18.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,25,0.05,low_texture,adaptive,,4.0,,21.9333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,25,0.05,low_texture,theta=0.05,0.05,,11158.4,19.1436,19.14,0.003625,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.05,low_texture,theta=0.10,0.1,,5579.2,19.1472,19.14,0.007249,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.05,low_texture,theta=0.20,0.2,,2789.6,19.1545,19.14,0.014499,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.05,low_texture,theta=0.40,0.4,,1394.8,19.169,19.14,0.028998,False,128x128,N/A (research)
+DAVIS346,DVS,10,25,0.05,low_texture,theta=0.05,0.05,,11158.4,10.0004,10.0,0.000359,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.05,low_texture,theta=0.10,0.1,,5579.2,10.0007,10.0,0.000717,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.05,low_texture,theta=0.20,0.2,,2789.6,10.0014,10.0,0.001436,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.05,low_texture,theta=0.40,0.4,,1394.8,10.0029,10.0,0.00287,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,25,0.05,low_texture,theta=0.05,0.05,,11158.4,10.0001,10.0,0.000147,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.05,low_texture,theta=0.10,0.1,,5579.2,10.0003,10.0,0.000293,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.05,low_texture,theta=0.20,0.2,,2789.6,10.0006,10.0,0.000586,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.05,low_texture,theta=0.40,0.4,,1394.8,10.0012,10.0,0.001172,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,25,0.05,low_texture,theta=0.05,0.05,,11158.4,32.0001,32.0,7.3e-05,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.05,low_texture,theta=0.10,0.1,,5579.2,32.0001,32.0,0.000147,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.05,low_texture,theta=0.20,0.2,,2789.6,32.0003,32.0,0.000293,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.05,low_texture,theta=0.40,0.4,,1394.8,32.0006,32.0,0.000586,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,10,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,25,0.4,high_texture,adaptive,,4.0,,3.2667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,25,0.4,high_texture,adaptive,,4.0,,34.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,25,0.4,high_texture,adaptive,,4.0,,18.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,25,0.4,high_texture,adaptive,,4.0,,21.9333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,25,0.4,high_texture,theta=0.05,0.05,,58467.2,19.159,19.14,0.018993,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.4,high_texture,theta=0.10,0.1,,29233.6,19.178,19.14,0.037986,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.4,high_texture,theta=0.20,0.2,,14616.8,19.216,19.14,0.075971,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,25,0.4,high_texture,theta=0.40,0.4,,7308.4,19.2919,19.14,0.151942,False,128x128,N/A (research)
+DAVIS346,DVS,10,25,0.4,high_texture,theta=0.05,0.05,,58467.2,10.0019,10.0,0.00188,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.4,high_texture,theta=0.10,0.1,,29233.6,10.0038,10.0,0.00376,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.4,high_texture,theta=0.20,0.2,,14616.8,10.0075,10.0,0.00752,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,25,0.4,high_texture,theta=0.40,0.4,,7308.4,10.015,10.0,0.01504,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,25,0.4,high_texture,theta=0.05,0.05,,58467.2,10.0008,10.0,0.000767,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.4,high_texture,theta=0.10,0.1,,29233.6,10.0015,10.0,0.001535,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.4,high_texture,theta=0.20,0.2,,14616.8,10.0031,10.0,0.003069,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,25,0.4,high_texture,theta=0.40,0.4,,7308.4,10.0061,10.0,0.006139,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,25,0.4,high_texture,theta=0.05,0.05,,58467.2,32.0004,32.0,0.000384,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.4,high_texture,theta=0.10,0.1,,29233.6,32.0008,32.0,0.000767,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.4,high_texture,theta=0.20,0.2,,14616.8,32.0015,32.0,0.001535,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,25,0.4,high_texture,theta=0.40,0.4,,7308.4,32.0031,32.0,0.003069,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,10,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,50,0.05,low_texture,adaptive,,2.0,,2.6333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,50,0.05,low_texture,adaptive,,2.0,,24.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,50,0.05,low_texture,adaptive,,2.0,,14.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,50,0.05,low_texture,adaptive,,2.0,,16.9667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,50,0.05,low_texture,theta=0.05,0.05,,15558.4,19.1451,19.14,0.005054,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.05,low_texture,theta=0.10,0.1,,7779.2,19.1501,19.14,0.010108,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.05,low_texture,theta=0.20,0.2,,3889.6,19.1602,19.14,0.020216,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.05,low_texture,theta=0.40,0.4,,1944.8,19.1804,19.14,0.040433,False,128x128,N/A (research)
+DAVIS346,DVS,10,50,0.05,low_texture,theta=0.05,0.05,,15558.4,10.0005,10.0,0.000501,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.05,low_texture,theta=0.10,0.1,,7779.2,10.001,10.0,0.001,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.05,low_texture,theta=0.20,0.2,,3889.6,10.002,10.0,0.002002,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.05,low_texture,theta=0.40,0.4,,1944.8,10.004,10.0,0.004002,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,50,0.05,low_texture,theta=0.05,0.05,,15558.4,10.0002,10.0,0.000204,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.05,low_texture,theta=0.10,0.1,,7779.2,10.0004,10.0,0.000409,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.05,low_texture,theta=0.20,0.2,,3889.6,10.0008,10.0,0.000817,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.05,low_texture,theta=0.40,0.4,,1944.8,10.0016,10.0,0.001634,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,50,0.05,low_texture,theta=0.05,0.05,,15558.4,32.0001,32.0,0.000102,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.05,low_texture,theta=0.10,0.1,,7779.2,32.0002,32.0,0.000204,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.05,low_texture,theta=0.20,0.2,,3889.6,32.0004,32.0,0.000409,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.05,low_texture,theta=0.40,0.4,,1944.8,32.0008,32.0,0.000817,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,10,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,50,0.4,high_texture,adaptive,,2.0,,2.6333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,50,0.4,high_texture,adaptive,,2.0,,24.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,50,0.4,high_texture,adaptive,,2.0,,14.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,50,0.4,high_texture,adaptive,,2.0,,16.9667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,50,0.4,high_texture,theta=0.05,0.05,,62867.2,19.1604,19.14,0.020422,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.4,high_texture,theta=0.10,0.1,,31433.6,19.1808,19.14,0.040844,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.4,high_texture,theta=0.20,0.2,,15716.8,19.2217,19.14,0.081688,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,50,0.4,high_texture,theta=0.40,0.4,,7858.4,19.3034,19.14,0.163377,False,128x128,N/A (research)
+DAVIS346,DVS,10,50,0.4,high_texture,theta=0.05,0.05,,62867.2,10.002,10.0,0.002022,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.4,high_texture,theta=0.10,0.1,,31433.6,10.004,10.0,0.004043,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.4,high_texture,theta=0.20,0.2,,15716.8,10.0081,10.0,0.008086,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,50,0.4,high_texture,theta=0.40,0.4,,7858.4,10.0162,10.0,0.016172,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,50,0.4,high_texture,theta=0.05,0.05,,62867.2,10.0008,10.0,0.000826,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.4,high_texture,theta=0.10,0.1,,31433.6,10.0017,10.0,0.00165,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.4,high_texture,theta=0.20,0.2,,15716.8,10.0033,10.0,0.0033,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,50,0.4,high_texture,theta=0.40,0.4,,7858.4,10.0066,10.0,0.006601,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,50,0.4,high_texture,theta=0.05,0.05,,62867.2,32.0004,32.0,0.000412,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.4,high_texture,theta=0.10,0.1,,31433.6,32.0008,32.0,0.000826,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.4,high_texture,theta=0.20,0.2,,15716.8,32.0017,32.0,0.00165,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,50,0.4,high_texture,theta=0.40,0.4,,7858.4,32.0033,32.0,0.0033,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,10,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,100,0.05,low_texture,adaptive,,1.0,,2.3167,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,100,0.05,low_texture,adaptive,,1.0,,19.75,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,100,0.05,low_texture,adaptive,,1.0,,12.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,100,0.05,low_texture,adaptive,,1.0,,14.4833,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,100,0.05,low_texture,theta=0.05,0.05,,24358.4,19.1479,19.14,0.007913,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.05,low_texture,theta=0.10,0.1,,12179.2,19.1558,19.14,0.015825,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.05,low_texture,theta=0.20,0.2,,6089.6,19.1717,19.14,0.03165,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.05,low_texture,theta=0.40,0.4,,3044.8,19.2033,19.14,0.063302,False,128x128,N/A (research)
+DAVIS346,DVS,10,100,0.05,low_texture,theta=0.05,0.05,,24358.4,10.0008,10.0,0.000784,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.05,low_texture,theta=0.10,0.1,,12179.2,10.0016,10.0,0.001566,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.05,low_texture,theta=0.20,0.2,,6089.6,10.0031,10.0,0.003133,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.05,low_texture,theta=0.40,0.4,,3044.8,10.0063,10.0,0.006266,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,100,0.05,low_texture,theta=0.05,0.05,,24358.4,10.0003,10.0,0.000319,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.05,low_texture,theta=0.10,0.1,,12179.2,10.0006,10.0,0.00064,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.05,low_texture,theta=0.20,0.2,,6089.6,10.0013,10.0,0.001279,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.05,low_texture,theta=0.40,0.4,,3044.8,10.0026,10.0,0.002558,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,100,0.05,low_texture,theta=0.05,0.05,,24358.4,32.0002,32.0,0.00016,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.05,low_texture,theta=0.10,0.1,,12179.2,32.0003,32.0,0.000319,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.05,low_texture,theta=0.20,0.2,,6089.6,32.0006,32.0,0.00064,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.05,low_texture,theta=0.40,0.4,,3044.8,32.0013,32.0,0.001279,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,10,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,10,100,0.4,high_texture,adaptive,,1.0,,2.3167,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,10,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,10,100,0.4,high_texture,adaptive,,1.0,,19.75,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,10,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,10,100,0.4,high_texture,adaptive,,1.0,,12.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,10,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,10,100,0.4,high_texture,adaptive,,1.0,,14.4833,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,10,100,0.4,high_texture,theta=0.05,0.05,,71667.2,19.1633,19.14,0.02328,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.4,high_texture,theta=0.10,0.1,,35833.6,19.1866,19.14,0.046561,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.4,high_texture,theta=0.20,0.2,,17916.8,19.2331,19.14,0.093123,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,10,100,0.4,high_texture,theta=0.40,0.4,,8958.4,19.3262,19.14,0.186246,False,128x128,N/A (research)
+DAVIS346,DVS,10,100,0.4,high_texture,theta=0.05,0.05,,71667.2,10.0023,10.0,0.002304,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.4,high_texture,theta=0.10,0.1,,35833.6,10.0046,10.0,0.004609,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.4,high_texture,theta=0.20,0.2,,17916.8,10.0092,10.0,0.009218,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,10,100,0.4,high_texture,theta=0.40,0.4,,8958.4,10.0184,10.0,0.018437,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,10,100,0.4,high_texture,theta=0.05,0.05,,71667.2,10.0009,10.0,0.000941,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.4,high_texture,theta=0.10,0.1,,35833.6,10.0019,10.0,0.001881,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.4,high_texture,theta=0.20,0.2,,17916.8,10.0038,10.0,0.003762,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,10,100,0.4,high_texture,theta=0.40,0.4,,8958.4,10.0075,10.0,0.007525,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,10,100,0.4,high_texture,theta=0.05,0.05,,71667.2,32.0005,32.0,0.000471,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.4,high_texture,theta=0.10,0.1,,35833.6,32.0009,32.0,0.000941,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.4,high_texture,theta=0.20,0.2,,17916.8,32.0019,32.0,0.001881,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,10,100,0.4,high_texture,theta=0.40,0.4,,8958.4,32.0038,32.0,0.003762,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,25,0.05,low_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,25,0.05,low_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,25,0.05,low_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,25,0.05,low_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,25,0.05,low_texture,theta=0.05,0.05,,55792.0,19.1581,19.14,0.018124,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.05,low_texture,theta=0.10,0.1,,27896.0,19.1762,19.14,0.036247,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.05,low_texture,theta=0.20,0.2,,13948.0,19.2125,19.14,0.072494,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.05,low_texture,theta=0.40,0.4,,6974.0,19.285,19.14,0.14499,False,128x128,N/A (research)
+DAVIS346,DVS,50,25,0.05,low_texture,theta=0.05,0.05,,55792.0,10.0018,10.0,0.001794,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.05,low_texture,theta=0.10,0.1,,27896.0,10.0036,10.0,0.003588,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.05,low_texture,theta=0.20,0.2,,13948.0,10.0072,10.0,0.007176,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.05,low_texture,theta=0.40,0.4,,6974.0,10.0144,10.0,0.014353,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,25,0.05,low_texture,theta=0.05,0.05,,55792.0,10.0007,10.0,0.000733,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.05,low_texture,theta=0.10,0.1,,27896.0,10.0015,10.0,0.001464,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.05,low_texture,theta=0.20,0.2,,13948.0,10.0029,10.0,0.002929,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.05,low_texture,theta=0.40,0.4,,6974.0,10.0059,10.0,0.005858,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,25,0.05,low_texture,theta=0.05,0.05,,55792.0,32.0004,32.0,0.000366,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.05,low_texture,theta=0.10,0.1,,27896.0,32.0007,32.0,0.000733,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.05,low_texture,theta=0.20,0.2,,13948.0,32.0015,32.0,0.001464,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.05,low_texture,theta=0.40,0.4,,6974.0,32.0029,32.0,0.002929,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,25,0.4,high_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,25,0.4,high_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,25,0.4,high_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,25,0.4,high_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,25,0.4,high_texture,theta=0.05,0.05,,292336.0,19.235,19.14,0.094963,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.4,high_texture,theta=0.10,0.1,,146168.0,19.3299,19.14,0.189927,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.4,high_texture,theta=0.20,0.2,,73084.0,19.5199,19.14,0.379855,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,25,0.4,high_texture,theta=0.40,0.4,,36542.0,19.8997,19.14,0.759708,False,128x128,N/A (research)
+DAVIS346,DVS,50,25,0.4,high_texture,theta=0.05,0.05,,292336.0,10.0094,10.0,0.0094,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.4,high_texture,theta=0.10,0.1,,146168.0,10.0188,10.0,0.018801,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.4,high_texture,theta=0.20,0.2,,73084.0,10.0376,10.0,0.037602,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,25,0.4,high_texture,theta=0.40,0.4,,36542.0,10.0752,10.0,0.075203,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,25,0.4,high_texture,theta=0.05,0.05,,292336.0,10.0038,10.0,0.003836,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.4,high_texture,theta=0.10,0.1,,146168.0,10.0077,10.0,0.007674,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.4,high_texture,theta=0.20,0.2,,73084.0,10.0153,10.0,0.015348,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,25,0.4,high_texture,theta=0.40,0.4,,36542.0,10.0307,10.0,0.030695,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,25,0.4,high_texture,theta=0.05,0.05,,292336.0,32.0019,32.0,0.001919,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.4,high_texture,theta=0.10,0.1,,146168.0,32.0038,32.0,0.003836,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.4,high_texture,theta=0.20,0.2,,73084.0,32.0077,32.0,0.007674,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,25,0.4,high_texture,theta=0.40,0.4,,36542.0,32.0153,32.0,0.015348,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,50,0.05,low_texture,adaptive,,10.0,,5.1667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,50,0.05,low_texture,adaptive,,10.0,,62.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,50,0.05,low_texture,adaptive,,10.0,,30.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,50,0.05,low_texture,adaptive,,10.0,,36.8333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,50,0.05,low_texture,theta=0.05,0.05,,77792.0,19.1653,19.14,0.025271,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.05,low_texture,theta=0.10,0.1,,38896.0,19.1905,19.14,0.05054,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.05,low_texture,theta=0.20,0.2,,19448.0,19.2411,19.14,0.101081,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.05,low_texture,theta=0.40,0.4,,9724.0,19.3422,19.14,0.202162,False,128x128,N/A (research)
+DAVIS346,DVS,50,50,0.05,low_texture,theta=0.05,0.05,,77792.0,10.0025,10.0,0.002501,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.05,low_texture,theta=0.10,0.1,,38896.0,10.005,10.0,0.005003,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.05,low_texture,theta=0.20,0.2,,19448.0,10.01,10.0,0.010006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.05,low_texture,theta=0.40,0.4,,9724.0,10.02,10.0,0.020012,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,50,0.05,low_texture,theta=0.05,0.05,,77792.0,10.001,10.0,0.001021,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.05,low_texture,theta=0.10,0.1,,38896.0,10.002,10.0,0.002042,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.05,low_texture,theta=0.20,0.2,,19448.0,10.0041,10.0,0.004084,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.05,low_texture,theta=0.40,0.4,,9724.0,10.0082,10.0,0.008168,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,50,0.05,low_texture,theta=0.05,0.05,,77792.0,32.0005,32.0,0.000511,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.05,low_texture,theta=0.10,0.1,,38896.0,32.001,32.0,0.001021,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.05,low_texture,theta=0.20,0.2,,19448.0,32.002,32.0,0.002042,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.05,low_texture,theta=0.40,0.4,,9724.0,32.0041,32.0,0.004084,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,50,0.4,high_texture,adaptive,,10.0,,5.1667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,50,0.4,high_texture,adaptive,,10.0,,62.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,50,0.4,high_texture,adaptive,,10.0,,30.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,50,0.4,high_texture,adaptive,,10.0,,36.8333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,50,0.4,high_texture,theta=0.05,0.05,,314336.0,19.2421,19.14,0.10211,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.4,high_texture,theta=0.10,0.1,,157168.0,19.3442,19.14,0.204221,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.4,high_texture,theta=0.20,0.2,,78584.0,19.5484,19.14,0.40844,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,50,0.4,high_texture,theta=0.40,0.4,,39292.0,19.9569,19.14,0.816881,False,128x128,N/A (research)
+DAVIS346,DVS,50,50,0.4,high_texture,theta=0.05,0.05,,314336.0,10.0101,10.0,0.010108,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.4,high_texture,theta=0.10,0.1,,157168.0,10.0202,10.0,0.020215,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.4,high_texture,theta=0.20,0.2,,78584.0,10.0404,10.0,0.040432,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,50,0.4,high_texture,theta=0.40,0.4,,39292.0,10.0809,10.0,0.080863,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,50,0.4,high_texture,theta=0.05,0.05,,314336.0,10.0041,10.0,0.004126,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.4,high_texture,theta=0.10,0.1,,157168.0,10.0083,10.0,0.008251,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.4,high_texture,theta=0.20,0.2,,78584.0,10.0165,10.0,0.016503,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,50,0.4,high_texture,theta=0.40,0.4,,39292.0,10.033,10.0,0.033005,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,50,0.4,high_texture,theta=0.05,0.05,,314336.0,32.0021,32.0,0.002062,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.4,high_texture,theta=0.10,0.1,,157168.0,32.0041,32.0,0.004126,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.4,high_texture,theta=0.20,0.2,,78584.0,32.0083,32.0,0.008251,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,50,0.4,high_texture,theta=0.40,0.4,,39292.0,32.0165,32.0,0.016503,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,100,0.05,low_texture,adaptive,,5.0,,3.5833,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,100,0.05,low_texture,adaptive,,5.0,,38.75,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,100,0.05,low_texture,adaptive,,5.0,,20.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,100,0.05,low_texture,adaptive,,5.0,,24.4167,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,100,0.05,low_texture,theta=0.05,0.05,,121792.0,19.1796,19.14,0.039563,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.05,low_texture,theta=0.10,0.1,,60896.0,19.2191,19.14,0.079127,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.05,low_texture,theta=0.20,0.2,,30448.0,19.2983,19.14,0.158254,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.05,low_texture,theta=0.40,0.4,,15224.0,19.4565,19.14,0.316507,False,128x128,N/A (research)
+DAVIS346,DVS,50,100,0.05,low_texture,theta=0.05,0.05,,121792.0,10.0039,10.0,0.003916,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.05,low_texture,theta=0.10,0.1,,60896.0,10.0078,10.0,0.007833,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.05,low_texture,theta=0.20,0.2,,30448.0,10.0157,10.0,0.015666,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.05,low_texture,theta=0.40,0.4,,15224.0,10.0313,10.0,0.031331,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,100,0.05,low_texture,theta=0.05,0.05,,121792.0,10.0016,10.0,0.001598,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.05,low_texture,theta=0.10,0.1,,60896.0,10.0032,10.0,0.003197,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.05,low_texture,theta=0.20,0.2,,30448.0,10.0064,10.0,0.006394,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.05,low_texture,theta=0.40,0.4,,15224.0,10.0128,10.0,0.012788,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,100,0.05,low_texture,theta=0.05,0.05,,121792.0,32.0008,32.0,0.000799,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.05,low_texture,theta=0.10,0.1,,60896.0,32.0016,32.0,0.001598,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.05,low_texture,theta=0.20,0.2,,30448.0,32.0032,32.0,0.003197,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.05,low_texture,theta=0.40,0.4,,15224.0,32.0064,32.0,0.006394,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,50,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,50,100,0.4,high_texture,adaptive,,5.0,,3.5833,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,50,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,50,100,0.4,high_texture,adaptive,,5.0,,38.75,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,50,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,50,100,0.4,high_texture,adaptive,,5.0,,20.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,50,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,50,100,0.4,high_texture,adaptive,,5.0,,24.4167,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,50,100,0.4,high_texture,theta=0.05,0.05,,358336.0,19.2564,19.14,0.116403,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.4,high_texture,theta=0.10,0.1,,179168.0,19.3728,19.14,0.232806,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.4,high_texture,theta=0.20,0.2,,89584.0,19.6056,19.14,0.465613,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,50,100,0.4,high_texture,theta=0.40,0.4,,44792.0,20.0712,19.14,0.931226,False,128x128,N/A (research)
+DAVIS346,DVS,50,100,0.4,high_texture,theta=0.05,0.05,,358336.0,10.0115,10.0,0.011522,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.4,high_texture,theta=0.10,0.1,,179168.0,10.023,10.0,0.023046,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.4,high_texture,theta=0.20,0.2,,89584.0,10.0461,10.0,0.046091,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,50,100,0.4,high_texture,theta=0.40,0.4,,44792.0,10.0922,10.0,0.092182,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,50,100,0.4,high_texture,theta=0.05,0.05,,358336.0,10.0047,10.0,0.004703,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.4,high_texture,theta=0.10,0.1,,179168.0,10.0094,10.0,0.009406,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.4,high_texture,theta=0.20,0.2,,89584.0,10.0188,10.0,0.018813,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,50,100,0.4,high_texture,theta=0.40,0.4,,44792.0,10.0376,10.0,0.037625,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,50,100,0.4,high_texture,theta=0.05,0.05,,358336.0,32.0024,32.0,0.002352,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.4,high_texture,theta=0.10,0.1,,179168.0,32.0047,32.0,0.004703,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.4,high_texture,theta=0.20,0.2,,89584.0,32.0094,32.0,0.009406,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,50,100,0.4,high_texture,theta=0.40,0.4,,44792.0,32.0188,32.0,0.018813,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,25,0.05,low_texture,adaptive,,40.0,,14.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,25,0.05,low_texture,adaptive,,40.0,,205.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,25,0.05,low_texture,adaptive,,40.0,,90.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,25,0.05,low_texture,adaptive,,40.0,,111.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,25,0.05,low_texture,theta=0.05,0.05,,111584.0,19.1762,19.14,0.036247,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.05,low_texture,theta=0.10,0.1,,55792.0,19.2125,19.14,0.072494,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.05,low_texture,theta=0.20,0.2,,27896.0,19.285,19.14,0.14499,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.05,low_texture,theta=0.40,0.4,,13948.0,19.43,19.14,0.289979,False,128x128,N/A (research)
+DAVIS346,DVS,100,25,0.05,low_texture,theta=0.05,0.05,,111584.0,10.0036,10.0,0.003588,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.05,low_texture,theta=0.10,0.1,,55792.0,10.0072,10.0,0.007176,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.05,low_texture,theta=0.20,0.2,,27896.0,10.0144,10.0,0.014353,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.05,low_texture,theta=0.40,0.4,,13948.0,10.0287,10.0,0.028705,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,25,0.05,low_texture,theta=0.05,0.05,,111584.0,10.0015,10.0,0.001464,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.05,low_texture,theta=0.10,0.1,,55792.0,10.0029,10.0,0.002929,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.05,low_texture,theta=0.20,0.2,,27896.0,10.0059,10.0,0.005858,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.05,low_texture,theta=0.40,0.4,,13948.0,10.0117,10.0,0.011716,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,25,0.05,low_texture,theta=0.05,0.05,,111584.0,32.0007,32.0,0.000733,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.05,low_texture,theta=0.10,0.1,,55792.0,32.0015,32.0,0.001464,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.05,low_texture,theta=0.20,0.2,,27896.0,32.0029,32.0,0.002929,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.05,low_texture,theta=0.40,0.4,,13948.0,32.0059,32.0,0.005858,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,25,0.4,high_texture,adaptive,,40.0,,14.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,25,0.4,high_texture,adaptive,,40.0,,205.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,25,0.4,high_texture,adaptive,,40.0,,90.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,25,0.4,high_texture,adaptive,,40.0,,111.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,25,0.4,high_texture,theta=0.05,0.05,,584672.0,19.3299,19.14,0.189927,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.4,high_texture,theta=0.10,0.1,,292336.0,19.5199,19.14,0.379855,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.4,high_texture,theta=0.20,0.2,,146168.0,19.8997,19.14,0.759708,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,25,0.4,high_texture,theta=0.40,0.4,,73084.0,20.6594,19.14,1.519416,False,128x128,N/A (research)
+DAVIS346,DVS,100,25,0.4,high_texture,theta=0.05,0.05,,584672.0,10.0188,10.0,0.018801,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.4,high_texture,theta=0.10,0.1,,292336.0,10.0376,10.0,0.037602,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.4,high_texture,theta=0.20,0.2,,146168.0,10.0752,10.0,0.075203,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,25,0.4,high_texture,theta=0.40,0.4,,73084.0,10.1504,10.0,0.150406,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,25,0.4,high_texture,theta=0.05,0.05,,584672.0,10.0077,10.0,0.007674,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.4,high_texture,theta=0.10,0.1,,292336.0,10.0153,10.0,0.015348,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.4,high_texture,theta=0.20,0.2,,146168.0,10.0307,10.0,0.030695,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,25,0.4,high_texture,theta=0.40,0.4,,73084.0,10.0614,10.0,0.061391,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,25,0.4,high_texture,theta=0.05,0.05,,584672.0,32.0038,32.0,0.003836,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.4,high_texture,theta=0.10,0.1,,292336.0,32.0077,32.0,0.007674,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.4,high_texture,theta=0.20,0.2,,146168.0,32.0153,32.0,0.015348,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,25,0.4,high_texture,theta=0.40,0.4,,73084.0,32.0307,32.0,0.030695,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,50,0.05,low_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,50,0.05,low_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,50,0.05,low_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,50,0.05,low_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,50,0.05,low_texture,theta=0.05,0.05,,155584.0,19.1905,19.14,0.05054,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.05,low_texture,theta=0.10,0.1,,77792.0,19.2411,19.14,0.101081,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.05,low_texture,theta=0.20,0.2,,38896.0,19.3422,19.14,0.202162,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.05,low_texture,theta=0.40,0.4,,19448.0,19.5443,19.14,0.404324,False,128x128,N/A (research)
+DAVIS346,DVS,100,50,0.05,low_texture,theta=0.05,0.05,,155584.0,10.005,10.0,0.005003,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.05,low_texture,theta=0.10,0.1,,77792.0,10.01,10.0,0.010006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.05,low_texture,theta=0.20,0.2,,38896.0,10.02,10.0,0.020012,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.05,low_texture,theta=0.40,0.4,,19448.0,10.04,10.0,0.040024,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,50,0.05,low_texture,theta=0.05,0.05,,155584.0,10.002,10.0,0.002042,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.05,low_texture,theta=0.10,0.1,,77792.0,10.0041,10.0,0.004084,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.05,low_texture,theta=0.20,0.2,,38896.0,10.0082,10.0,0.008168,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.05,low_texture,theta=0.40,0.4,,19448.0,10.0163,10.0,0.016336,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,50,0.05,low_texture,theta=0.05,0.05,,155584.0,32.001,32.0,0.001021,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.05,low_texture,theta=0.10,0.1,,77792.0,32.002,32.0,0.002042,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.05,low_texture,theta=0.20,0.2,,38896.0,32.0041,32.0,0.004084,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.05,low_texture,theta=0.40,0.4,,19448.0,32.0082,32.0,0.008168,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,50,0.4,high_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,50,0.4,high_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,50,0.4,high_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,50,0.4,high_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,50,0.4,high_texture,theta=0.05,0.05,,628672.0,19.3442,19.14,0.204221,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.4,high_texture,theta=0.10,0.1,,314336.0,19.5484,19.14,0.40844,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.4,high_texture,theta=0.20,0.2,,157168.0,19.9569,19.14,0.816881,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,50,0.4,high_texture,theta=0.40,0.4,,78584.0,20.7738,19.14,1.633761,False,128x128,N/A (research)
+DAVIS346,DVS,100,50,0.4,high_texture,theta=0.05,0.05,,628672.0,10.0202,10.0,0.020215,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.4,high_texture,theta=0.10,0.1,,314336.0,10.0404,10.0,0.040432,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.4,high_texture,theta=0.20,0.2,,157168.0,10.0809,10.0,0.080863,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,50,0.4,high_texture,theta=0.40,0.4,,78584.0,10.1617,10.0,0.161725,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,50,0.4,high_texture,theta=0.05,0.05,,628672.0,10.0083,10.0,0.008251,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.4,high_texture,theta=0.10,0.1,,314336.0,10.0165,10.0,0.016503,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.4,high_texture,theta=0.20,0.2,,157168.0,10.033,10.0,0.033005,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,50,0.4,high_texture,theta=0.40,0.4,,78584.0,10.066,10.0,0.066011,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,50,0.4,high_texture,theta=0.05,0.05,,628672.0,32.0041,32.0,0.004126,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.4,high_texture,theta=0.10,0.1,,314336.0,32.0083,32.0,0.008251,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.4,high_texture,theta=0.20,0.2,,157168.0,32.0165,32.0,0.016503,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,50,0.4,high_texture,theta=0.40,0.4,,78584.0,32.033,32.0,0.033005,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,100,0.05,low_texture,adaptive,,10.0,,5.1667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,100,0.05,low_texture,adaptive,,10.0,,62.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,100,0.05,low_texture,adaptive,,10.0,,30.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,100,0.05,low_texture,adaptive,,10.0,,36.8333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,100,0.05,low_texture,theta=0.05,0.05,,243584.0,19.2191,19.14,0.079127,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.05,low_texture,theta=0.10,0.1,,121792.0,19.2983,19.14,0.158254,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.05,low_texture,theta=0.20,0.2,,60896.0,19.4565,19.14,0.316507,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.05,low_texture,theta=0.40,0.4,,30448.0,19.773,19.14,0.633014,False,128x128,N/A (research)
+DAVIS346,DVS,100,100,0.05,low_texture,theta=0.05,0.05,,243584.0,10.0078,10.0,0.007833,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.05,low_texture,theta=0.10,0.1,,121792.0,10.0157,10.0,0.015666,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.05,low_texture,theta=0.20,0.2,,60896.0,10.0313,10.0,0.031331,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.05,low_texture,theta=0.40,0.4,,30448.0,10.0627,10.0,0.062662,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,100,0.05,low_texture,theta=0.05,0.05,,243584.0,10.0032,10.0,0.003197,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.05,low_texture,theta=0.10,0.1,,121792.0,10.0064,10.0,0.006394,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.05,low_texture,theta=0.20,0.2,,60896.0,10.0128,10.0,0.012788,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.05,low_texture,theta=0.40,0.4,,30448.0,10.0256,10.0,0.025576,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,100,0.05,low_texture,theta=0.05,0.05,,243584.0,32.0016,32.0,0.001598,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.05,low_texture,theta=0.10,0.1,,121792.0,32.0032,32.0,0.003197,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.05,low_texture,theta=0.20,0.2,,60896.0,32.0064,32.0,0.006394,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.05,low_texture,theta=0.40,0.4,,30448.0,32.0128,32.0,0.012788,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,100,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,100,100,0.4,high_texture,adaptive,,10.0,,5.1667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,100,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,100,100,0.4,high_texture,adaptive,,10.0,,62.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,100,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,100,100,0.4,high_texture,adaptive,,10.0,,30.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,100,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,100,100,0.4,high_texture,adaptive,,10.0,,36.8333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,100,100,0.4,high_texture,theta=0.05,0.05,,716672.0,19.3728,19.14,0.232806,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.4,high_texture,theta=0.10,0.1,,358336.0,19.6056,19.14,0.465613,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.4,high_texture,theta=0.20,0.2,,179168.0,20.0712,19.14,0.931226,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,100,100,0.4,high_texture,theta=0.40,0.4,,89584.0,21.0025,19.14,1.862451,False,128x128,N/A (research)
+DAVIS346,DVS,100,100,0.4,high_texture,theta=0.05,0.05,,716672.0,10.023,10.0,0.023046,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.4,high_texture,theta=0.10,0.1,,358336.0,10.0461,10.0,0.046091,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.4,high_texture,theta=0.20,0.2,,179168.0,10.0922,10.0,0.092182,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,100,100,0.4,high_texture,theta=0.40,0.4,,89584.0,10.1844,10.0,0.184363,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,100,100,0.4,high_texture,theta=0.05,0.05,,716672.0,10.0094,10.0,0.009406,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.4,high_texture,theta=0.10,0.1,,358336.0,10.0188,10.0,0.018813,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.4,high_texture,theta=0.20,0.2,,179168.0,10.0376,10.0,0.037625,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,100,100,0.4,high_texture,theta=0.40,0.4,,89584.0,10.0753,10.0,0.075251,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,100,100,0.4,high_texture,theta=0.05,0.05,,716672.0,32.0047,32.0,0.004703,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.4,high_texture,theta=0.10,0.1,,358336.0,32.0094,32.0,0.009406,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.4,high_texture,theta=0.20,0.2,,179168.0,32.0188,32.0,0.018813,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,100,100,0.4,high_texture,theta=0.40,0.4,,89584.0,32.0376,32.0,0.037625,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,25,0.05,low_texture,adaptive,,80.0,,27.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,25,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,25,0.05,low_texture,adaptive,,80.0,,170.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,25,0.05,low_texture,adaptive,,80.0,,210.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,25,0.05,low_texture,theta=0.05,0.05,,223168.0,19.2125,19.14,0.072494,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.05,low_texture,theta=0.10,0.1,,111584.0,19.285,19.14,0.14499,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.05,low_texture,theta=0.20,0.2,,55792.0,19.43,19.14,0.289979,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.05,low_texture,theta=0.40,0.4,,27896.0,19.72,19.14,0.579958,False,128x128,N/A (research)
+DAVIS346,DVS,200,25,0.05,low_texture,theta=0.05,0.05,,223168.0,10.0072,10.0,0.007176,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.05,low_texture,theta=0.10,0.1,,111584.0,10.0144,10.0,0.014353,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.05,low_texture,theta=0.20,0.2,,55792.0,10.0287,10.0,0.028705,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.05,low_texture,theta=0.40,0.4,,27896.0,10.0574,10.0,0.05741,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,25,0.05,low_texture,theta=0.05,0.05,,223168.0,10.0029,10.0,0.002929,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.05,low_texture,theta=0.10,0.1,,111584.0,10.0059,10.0,0.005858,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.05,low_texture,theta=0.20,0.2,,55792.0,10.0117,10.0,0.011716,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.05,low_texture,theta=0.40,0.4,,27896.0,10.0234,10.0,0.023433,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,25,0.05,low_texture,theta=0.05,0.05,,223168.0,32.0015,32.0,0.001464,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.05,low_texture,theta=0.10,0.1,,111584.0,32.0029,32.0,0.002929,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.05,low_texture,theta=0.20,0.2,,55792.0,32.0059,32.0,0.005858,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.05,low_texture,theta=0.40,0.4,,27896.0,32.0117,32.0,0.011716,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,25,0.4,high_texture,adaptive,,80.0,,27.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,25,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,25,0.4,high_texture,adaptive,,80.0,,170.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,25,0.4,high_texture,adaptive,,80.0,,210.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,25,0.4,high_texture,theta=0.05,0.05,,1169344.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.4,high_texture,theta=0.10,0.1,,584672.0,19.8997,19.14,0.759708,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.4,high_texture,theta=0.20,0.2,,292336.0,20.6594,19.14,1.519416,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,25,0.4,high_texture,theta=0.40,0.4,,146168.0,22.1788,19.14,3.038833,False,128x128,N/A (research)
+DAVIS346,DVS,200,25,0.4,high_texture,theta=0.05,0.05,,1169344.0,10.0376,10.0,0.037602,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.4,high_texture,theta=0.10,0.1,,584672.0,10.0752,10.0,0.075203,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.4,high_texture,theta=0.20,0.2,,292336.0,10.1504,10.0,0.150406,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,25,0.4,high_texture,theta=0.40,0.4,,146168.0,10.3008,10.0,0.300814,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,25,0.4,high_texture,theta=0.05,0.05,,1169344.0,10.0153,10.0,0.015348,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.4,high_texture,theta=0.10,0.1,,584672.0,10.0307,10.0,0.030695,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.4,high_texture,theta=0.20,0.2,,292336.0,10.0614,10.0,0.061391,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,25,0.4,high_texture,theta=0.40,0.4,,146168.0,10.1228,10.0,0.122781,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,25,0.4,high_texture,theta=0.05,0.05,,1169344.0,32.0077,32.0,0.007674,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.4,high_texture,theta=0.10,0.1,,584672.0,32.0153,32.0,0.015348,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.4,high_texture,theta=0.20,0.2,,292336.0,32.0307,32.0,0.030695,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,25,0.4,high_texture,theta=0.40,0.4,,146168.0,32.0614,32.0,0.061391,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,50,0.05,low_texture,adaptive,,40.0,,14.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,50,0.05,low_texture,adaptive,,40.0,,205.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,50,0.05,low_texture,adaptive,,40.0,,90.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,50,0.05,low_texture,adaptive,,40.0,,111.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,50,0.05,low_texture,theta=0.05,0.05,,311168.0,19.2411,19.14,0.101081,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.05,low_texture,theta=0.10,0.1,,155584.0,19.3422,19.14,0.202162,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.05,low_texture,theta=0.20,0.2,,77792.0,19.5443,19.14,0.404324,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.05,low_texture,theta=0.40,0.4,,38896.0,19.9486,19.14,0.808648,False,128x128,N/A (research)
+DAVIS346,DVS,200,50,0.05,low_texture,theta=0.05,0.05,,311168.0,10.01,10.0,0.010006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.05,low_texture,theta=0.10,0.1,,155584.0,10.02,10.0,0.020012,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.05,low_texture,theta=0.20,0.2,,77792.0,10.04,10.0,0.040024,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.05,low_texture,theta=0.40,0.4,,38896.0,10.08,10.0,0.080048,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,50,0.05,low_texture,theta=0.05,0.05,,311168.0,10.0041,10.0,0.004084,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.05,low_texture,theta=0.10,0.1,,155584.0,10.0082,10.0,0.008168,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.05,low_texture,theta=0.20,0.2,,77792.0,10.0163,10.0,0.016336,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.05,low_texture,theta=0.40,0.4,,38896.0,10.0327,10.0,0.032673,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,50,0.05,low_texture,theta=0.05,0.05,,311168.0,32.002,32.0,0.002042,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.05,low_texture,theta=0.10,0.1,,155584.0,32.0041,32.0,0.004084,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.05,low_texture,theta=0.20,0.2,,77792.0,32.0082,32.0,0.008168,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.05,low_texture,theta=0.40,0.4,,38896.0,32.0163,32.0,0.016336,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,50,0.4,high_texture,adaptive,,40.0,,14.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,50,0.4,high_texture,adaptive,,40.0,,205.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,50,0.4,high_texture,adaptive,,40.0,,90.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,50,0.4,high_texture,adaptive,,40.0,,111.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,50,0.4,high_texture,theta=0.05,0.05,,1257344.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.4,high_texture,theta=0.10,0.1,,628672.0,19.9569,19.14,0.816881,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.4,high_texture,theta=0.20,0.2,,314336.0,20.7738,19.14,1.633761,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,50,0.4,high_texture,theta=0.40,0.4,,157168.0,22.4075,19.14,3.267523,False,128x128,N/A (research)
+DAVIS346,DVS,200,50,0.4,high_texture,theta=0.05,0.05,,1257344.0,10.0404,10.0,0.040432,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.4,high_texture,theta=0.10,0.1,,628672.0,10.0809,10.0,0.080863,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.4,high_texture,theta=0.20,0.2,,314336.0,10.1617,10.0,0.161725,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,50,0.4,high_texture,theta=0.40,0.4,,157168.0,10.3235,10.0,0.323452,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,50,0.4,high_texture,theta=0.05,0.05,,1257344.0,10.0165,10.0,0.016503,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.4,high_texture,theta=0.10,0.1,,628672.0,10.033,10.0,0.033005,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.4,high_texture,theta=0.20,0.2,,314336.0,10.066,10.0,0.066011,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,50,0.4,high_texture,theta=0.40,0.4,,157168.0,10.132,10.0,0.132021,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,50,0.4,high_texture,theta=0.05,0.05,,1257344.0,32.0083,32.0,0.008251,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.4,high_texture,theta=0.10,0.1,,628672.0,32.0165,32.0,0.016503,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.4,high_texture,theta=0.20,0.2,,314336.0,32.033,32.0,0.033005,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,50,0.4,high_texture,theta=0.40,0.4,,157168.0,32.066,32.0,0.066011,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,100,0.05,low_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,100,0.05,low_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,100,0.05,low_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,100,0.05,low_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,100,0.05,low_texture,theta=0.05,0.05,,487168.0,19.2983,19.14,0.158254,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.05,low_texture,theta=0.10,0.1,,243584.0,19.4565,19.14,0.316507,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.05,low_texture,theta=0.20,0.2,,121792.0,19.773,19.14,0.633014,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.05,low_texture,theta=0.40,0.4,,60896.0,20.406,19.14,1.266028,False,128x128,N/A (research)
+DAVIS346,DVS,200,100,0.05,low_texture,theta=0.05,0.05,,487168.0,10.0157,10.0,0.015666,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.05,low_texture,theta=0.10,0.1,,243584.0,10.0313,10.0,0.031331,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.05,low_texture,theta=0.20,0.2,,121792.0,10.0627,10.0,0.062662,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.05,low_texture,theta=0.40,0.4,,60896.0,10.1253,10.0,0.125324,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,100,0.05,low_texture,theta=0.05,0.05,,487168.0,10.0064,10.0,0.006394,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.05,low_texture,theta=0.10,0.1,,243584.0,10.0128,10.0,0.012788,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.05,low_texture,theta=0.20,0.2,,121792.0,10.0256,10.0,0.025576,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.05,low_texture,theta=0.40,0.4,,60896.0,10.0512,10.0,0.051153,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,100,0.05,low_texture,theta=0.05,0.05,,487168.0,32.0032,32.0,0.003197,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.05,low_texture,theta=0.10,0.1,,243584.0,32.0064,32.0,0.006394,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.05,low_texture,theta=0.20,0.2,,121792.0,32.0128,32.0,0.012788,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.05,low_texture,theta=0.40,0.4,,60896.0,32.0256,32.0,0.025576,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,200,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,200,100,0.4,high_texture,adaptive,,20.0,,8.3333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,200,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,200,100,0.4,high_texture,adaptive,,20.0,,110.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,200,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,200,100,0.4,high_texture,adaptive,,20.0,,50.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,200,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,200,100,0.4,high_texture,adaptive,,20.0,,61.6667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,200,100,0.4,high_texture,theta=0.05,0.05,,1433344.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.4,high_texture,theta=0.10,0.1,,716672.0,20.0712,19.14,0.931226,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.4,high_texture,theta=0.20,0.2,,358336.0,21.0025,19.14,1.862451,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,200,100,0.4,high_texture,theta=0.40,0.4,,179168.0,22.8649,19.14,3.724903,False,128x128,N/A (research)
+DAVIS346,DVS,200,100,0.4,high_texture,theta=0.05,0.05,,1433344.0,10.0461,10.0,0.046091,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.4,high_texture,theta=0.10,0.1,,716672.0,10.0922,10.0,0.092182,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.4,high_texture,theta=0.20,0.2,,358336.0,10.1844,10.0,0.184363,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,200,100,0.4,high_texture,theta=0.40,0.4,,179168.0,10.3687,10.0,0.368728,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,200,100,0.4,high_texture,theta=0.05,0.05,,1433344.0,10.0188,10.0,0.018813,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.4,high_texture,theta=0.10,0.1,,716672.0,10.0376,10.0,0.037625,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.4,high_texture,theta=0.20,0.2,,358336.0,10.0753,10.0,0.075251,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,200,100,0.4,high_texture,theta=0.40,0.4,,179168.0,10.1505,10.0,0.150501,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,200,100,0.4,high_texture,theta=0.05,0.05,,1433344.0,32.0094,32.0,0.009406,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.4,high_texture,theta=0.10,0.1,,716672.0,32.0188,32.0,0.018813,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.4,high_texture,theta=0.20,0.2,,358336.0,32.0376,32.0,0.037625,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,200,100,0.4,high_texture,theta=0.40,0.4,,179168.0,32.0753,32.0,0.075251,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,25,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,25,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,25,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,25,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,25,0.05,low_texture,theta=0.05,0.05,,557920.0,19.3212,19.14,0.181237,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.05,low_texture,theta=0.10,0.1,,278960.0,19.5025,19.14,0.362473,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.05,low_texture,theta=0.20,0.2,,139480.0,19.8649,19.14,0.724948,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.05,low_texture,theta=0.40,0.4,,69740.0,20.5899,19.14,1.449894,False,128x128,N/A (research)
+DAVIS346,DVS,500,25,0.05,low_texture,theta=0.05,0.05,,557920.0,10.0179,10.0,0.017941,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.05,low_texture,theta=0.10,0.1,,278960.0,10.0359,10.0,0.035881,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.05,low_texture,theta=0.20,0.2,,139480.0,10.0718,10.0,0.071763,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.05,low_texture,theta=0.40,0.4,,69740.0,10.1435,10.0,0.143525,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,25,0.05,low_texture,theta=0.05,0.05,,557920.0,10.0073,10.0,0.007322,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.05,low_texture,theta=0.10,0.1,,278960.0,10.0146,10.0,0.014646,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.05,low_texture,theta=0.20,0.2,,139480.0,10.0293,10.0,0.029291,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.05,low_texture,theta=0.40,0.4,,69740.0,10.0586,10.0,0.058581,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,25,0.05,low_texture,theta=0.05,0.05,,557920.0,32.0037,32.0,0.003662,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.05,low_texture,theta=0.10,0.1,,278960.0,32.0073,32.0,0.007322,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.05,low_texture,theta=0.20,0.2,,139480.0,32.0146,32.0,0.014646,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.05,low_texture,theta=0.40,0.4,,69740.0,32.0293,32.0,0.029291,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,25,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,25,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,25,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,25,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,25,0.4,high_texture,theta=0.05,0.05,,2923360.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.4,high_texture,theta=0.10,0.1,,1461680.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.4,high_texture,theta=0.20,0.2,,730840.0,22.9385,19.14,3.798541,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,25,0.4,high_texture,theta=0.40,0.4,,365420.0,26.7371,19.14,7.597082,False,128x128,N/A (research)
+DAVIS346,DVS,500,25,0.4,high_texture,theta=0.05,0.05,,2923360.0,10.094,10.0,0.094005,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.4,high_texture,theta=0.10,0.1,,1461680.0,10.188,10.0,0.188009,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.4,high_texture,theta=0.20,0.2,,730840.0,10.376,10.0,0.376017,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,25,0.4,high_texture,theta=0.40,0.4,,365420.0,10.752,10.0,0.752034,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,25,0.4,high_texture,theta=0.05,0.05,,2923360.0,10.0384,10.0,0.038369,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.4,high_texture,theta=0.10,0.1,,1461680.0,10.0767,10.0,0.076738,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.4,high_texture,theta=0.20,0.2,,730840.0,10.1535,10.0,0.153477,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,25,0.4,high_texture,theta=0.40,0.4,,365420.0,10.307,10.0,0.306953,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,25,0.4,high_texture,theta=0.05,0.05,,2923360.0,32.0192,32.0,0.019184,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.4,high_texture,theta=0.10,0.1,,1461680.0,32.0384,32.0,0.038369,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.4,high_texture,theta=0.20,0.2,,730840.0,32.0767,32.0,0.076738,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,25,0.4,high_texture,theta=0.40,0.4,,365420.0,32.1535,32.0,0.153477,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,50,0.05,low_texture,adaptive,,100.0,,33.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,50,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,50,0.05,low_texture,adaptive,,100.0,,210.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,50,0.05,low_texture,adaptive,,100.0,,260.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,50,0.05,low_texture,theta=0.05,0.05,,777920.0,19.3927,19.14,0.252703,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.05,low_texture,theta=0.10,0.1,,388960.0,19.6454,19.14,0.505405,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.05,low_texture,theta=0.20,0.2,,194480.0,20.1508,19.14,1.01081,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.05,low_texture,theta=0.40,0.4,,97240.0,21.1616,19.14,2.021619,False,128x128,N/A (research)
+DAVIS346,DVS,500,50,0.05,low_texture,theta=0.05,0.05,,777920.0,10.025,10.0,0.025015,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.05,low_texture,theta=0.10,0.1,,388960.0,10.05,10.0,0.05003,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.05,low_texture,theta=0.20,0.2,,194480.0,10.1001,10.0,0.10006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.05,low_texture,theta=0.40,0.4,,97240.0,10.2001,10.0,0.20012,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,50,0.05,low_texture,theta=0.05,0.05,,777920.0,10.0102,10.0,0.01021,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.05,low_texture,theta=0.10,0.1,,388960.0,10.0204,10.0,0.020421,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.05,low_texture,theta=0.20,0.2,,194480.0,10.0408,10.0,0.040841,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.05,low_texture,theta=0.40,0.4,,97240.0,10.0817,10.0,0.081681,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,50,0.05,low_texture,theta=0.05,0.05,,777920.0,32.0051,32.0,0.005105,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.05,low_texture,theta=0.10,0.1,,388960.0,32.0102,32.0,0.01021,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.05,low_texture,theta=0.20,0.2,,194480.0,32.0204,32.0,0.020421,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.05,low_texture,theta=0.40,0.4,,97240.0,32.0408,32.0,0.040841,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,50,0.4,high_texture,adaptive,,100.0,,33.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,50,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,50,0.4,high_texture,adaptive,,100.0,,210.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,50,0.4,high_texture,adaptive,,100.0,,260.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,50,0.4,high_texture,theta=0.05,0.05,,3143360.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.4,high_texture,theta=0.10,0.1,,1571680.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.4,high_texture,theta=0.20,0.2,,785840.0,23.2244,19.14,4.084404,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,50,0.4,high_texture,theta=0.40,0.4,,392920.0,27.3088,19.14,8.168807,False,128x128,N/A (research)
+DAVIS346,DVS,500,50,0.4,high_texture,theta=0.05,0.05,,3143360.0,10.1011,10.0,0.101079,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.4,high_texture,theta=0.10,0.1,,1571680.0,10.2022,10.0,0.202157,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.4,high_texture,theta=0.20,0.2,,785840.0,10.4043,10.0,0.404315,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,50,0.4,high_texture,theta=0.40,0.4,,392920.0,10.8086,10.0,0.808629,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,50,0.4,high_texture,theta=0.05,0.05,,3143360.0,10.0413,10.0,0.041256,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.4,high_texture,theta=0.10,0.1,,1571680.0,10.0825,10.0,0.082513,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.4,high_texture,theta=0.20,0.2,,785840.0,10.165,10.0,0.165027,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,50,0.4,high_texture,theta=0.40,0.4,,392920.0,10.3301,10.0,0.330053,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,50,0.4,high_texture,theta=0.05,0.05,,3143360.0,32.0206,32.0,0.020629,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.4,high_texture,theta=0.10,0.1,,1571680.0,32.0413,32.0,0.041256,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.4,high_texture,theta=0.20,0.2,,785840.0,32.0825,32.0,0.082513,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,50,0.4,high_texture,theta=0.40,0.4,,392920.0,32.165,32.0,0.165027,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,100,0.05,low_texture,adaptive,,50.0,,17.8333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,100,0.05,low_texture,adaptive,,50.0,,252.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,100,0.05,low_texture,adaptive,,50.0,,110.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,100,0.05,low_texture,adaptive,,50.0,,136.1667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,100,0.05,low_texture,theta=0.05,0.05,,1217920.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.05,low_texture,theta=0.10,0.1,,608960.0,19.9313,19.14,0.791268,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.05,low_texture,theta=0.20,0.2,,304480.0,20.7225,19.14,1.582535,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.05,low_texture,theta=0.40,0.4,,152240.0,22.3051,19.14,3.165069,False,128x128,N/A (research)
+DAVIS346,DVS,500,100,0.05,low_texture,theta=0.05,0.05,,1217920.0,10.0392,10.0,0.039164,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.05,low_texture,theta=0.10,0.1,,608960.0,10.0783,10.0,0.078328,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.05,low_texture,theta=0.20,0.2,,304480.0,10.1567,10.0,0.156655,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.05,low_texture,theta=0.40,0.4,,152240.0,10.3133,10.0,0.31331,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,100,0.05,low_texture,theta=0.05,0.05,,1217920.0,10.016,10.0,0.015985,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.05,low_texture,theta=0.10,0.1,,608960.0,10.032,10.0,0.031971,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.05,low_texture,theta=0.20,0.2,,304480.0,10.0639,10.0,0.063941,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.05,low_texture,theta=0.40,0.4,,152240.0,10.1279,10.0,0.127881,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,100,0.05,low_texture,theta=0.05,0.05,,1217920.0,32.008,32.0,0.007992,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.05,low_texture,theta=0.10,0.1,,608960.0,32.016,32.0,0.015985,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.05,low_texture,theta=0.20,0.2,,304480.0,32.032,32.0,0.031971,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.05,low_texture,theta=0.40,0.4,,152240.0,32.0639,32.0,0.063941,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,500,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,500,100,0.4,high_texture,adaptive,,50.0,,17.8333,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,500,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,500,100,0.4,high_texture,adaptive,,50.0,,252.5,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,500,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,500,100,0.4,high_texture,adaptive,,50.0,,110.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,500,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,500,100,0.4,high_texture,adaptive,,50.0,,136.1667,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,500,100,0.4,high_texture,theta=0.05,0.05,,3583360.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.4,high_texture,theta=0.10,0.1,,1791680.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.4,high_texture,theta=0.20,0.2,,895840.0,23.7961,19.14,4.656129,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,500,100,0.4,high_texture,theta=0.40,0.4,,447920.0,28.4523,19.14,9.312257,False,128x128,N/A (research)
+DAVIS346,DVS,500,100,0.4,high_texture,theta=0.05,0.05,,3583360.0,10.1152,10.0,0.115227,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.4,high_texture,theta=0.10,0.1,,1791680.0,10.2305,10.0,0.230455,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.4,high_texture,theta=0.20,0.2,,895840.0,10.4609,10.0,0.46091,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,500,100,0.4,high_texture,theta=0.40,0.4,,447920.0,10.9218,10.0,0.921819,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,500,100,0.4,high_texture,theta=0.05,0.05,,3583360.0,10.047,10.0,0.047031,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.4,high_texture,theta=0.10,0.1,,1791680.0,10.0941,10.0,0.094063,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.4,high_texture,theta=0.20,0.2,,895840.0,10.1881,10.0,0.188127,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,500,100,0.4,high_texture,theta=0.40,0.4,,447920.0,10.3763,10.0,0.376253,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,500,100,0.4,high_texture,theta=0.05,0.05,,3583360.0,32.0235,32.0,0.023516,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.4,high_texture,theta=0.10,0.1,,1791680.0,32.047,32.0,0.047031,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.4,high_texture,theta=0.20,0.2,,895840.0,32.0941,32.0,0.094063,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,500,100,0.4,high_texture,theta=0.40,0.4,,447920.0,32.1881,32.0,0.188127,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,25,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,25,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,25,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,25,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,25,0.05,low_texture,theta=0.05,0.05,,1115840.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.05,low_texture,theta=0.10,0.1,,557920.0,19.8649,19.14,0.724948,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.05,low_texture,theta=0.20,0.2,,278960.0,20.5899,19.14,1.449894,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.05,low_texture,theta=0.40,0.4,,139480.0,22.0398,19.14,2.899789,False,128x128,N/A (research)
+DAVIS346,DVS,1000,25,0.05,low_texture,theta=0.05,0.05,,1115840.0,10.0359,10.0,0.035881,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.05,low_texture,theta=0.10,0.1,,557920.0,10.0718,10.0,0.071763,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.05,low_texture,theta=0.20,0.2,,278960.0,10.1435,10.0,0.143525,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.05,low_texture,theta=0.40,0.4,,139480.0,10.287,10.0,0.28705,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,25,0.05,low_texture,theta=0.05,0.05,,1115840.0,10.0146,10.0,0.014646,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.05,low_texture,theta=0.10,0.1,,557920.0,10.0293,10.0,0.029291,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.05,low_texture,theta=0.20,0.2,,278960.0,10.0586,10.0,0.058581,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.05,low_texture,theta=0.40,0.4,,139480.0,10.1172,10.0,0.117163,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,25,0.05,low_texture,theta=0.05,0.05,,1115840.0,32.0073,32.0,0.007322,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.05,low_texture,theta=0.10,0.1,,557920.0,32.0146,32.0,0.014646,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.05,low_texture,theta=0.20,0.2,,278960.0,32.0293,32.0,0.029291,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.05,low_texture,theta=0.40,0.4,,139480.0,32.0586,32.0,0.058581,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,25,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,25,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,25,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,25,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,25,0.4,high_texture,theta=0.05,0.05,,5846720.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.4,high_texture,theta=0.10,0.1,,2923360.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.4,high_texture,theta=0.20,0.2,,1461680.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,25,0.4,high_texture,theta=0.40,0.4,,730840.0,34.3342,19.14,15.194163,False,128x128,N/A (research)
+DAVIS346,DVS,1000,25,0.4,high_texture,theta=0.05,0.05,,5846720.0,10.188,10.0,0.188009,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.4,high_texture,theta=0.10,0.1,,2923360.0,10.376,10.0,0.376017,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.4,high_texture,theta=0.20,0.2,,1461680.0,10.752,10.0,0.752034,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,25,0.4,high_texture,theta=0.40,0.4,,730840.0,11.5041,10.0,1.504069,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,25,0.4,high_texture,theta=0.05,0.05,,5846720.0,10.0767,10.0,0.076738,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.4,high_texture,theta=0.10,0.1,,2923360.0,10.1535,10.0,0.153477,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.4,high_texture,theta=0.20,0.2,,1461680.0,10.307,10.0,0.306953,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,25,0.4,high_texture,theta=0.40,0.4,,730840.0,10.6139,10.0,0.613905,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,25,0.4,high_texture,theta=0.05,0.05,,5846720.0,32.0384,32.0,0.038369,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.4,high_texture,theta=0.10,0.1,,2923360.0,32.0767,32.0,0.076738,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.4,high_texture,theta=0.20,0.2,,1461680.0,32.1535,32.0,0.153477,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,25,0.4,high_texture,theta=0.40,0.4,,730840.0,32.307,32.0,0.306953,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,50,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,50,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,50,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,50,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,50,0.05,low_texture,theta=0.05,0.05,,1555840.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.05,low_texture,theta=0.10,0.1,,777920.0,20.1508,19.14,1.01081,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.05,low_texture,theta=0.20,0.2,,388960.0,21.1616,19.14,2.021619,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.05,low_texture,theta=0.40,0.4,,194480.0,23.1832,19.14,4.043239,False,128x128,N/A (research)
+DAVIS346,DVS,1000,50,0.05,low_texture,theta=0.05,0.05,,1555840.0,10.05,10.0,0.05003,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.05,low_texture,theta=0.10,0.1,,777920.0,10.1001,10.0,0.10006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.05,low_texture,theta=0.20,0.2,,388960.0,10.2001,10.0,0.20012,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.05,low_texture,theta=0.40,0.4,,194480.0,10.4002,10.0,0.40024,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,50,0.05,low_texture,theta=0.05,0.05,,1555840.0,10.0204,10.0,0.020421,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.05,low_texture,theta=0.10,0.1,,777920.0,10.0408,10.0,0.040841,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.05,low_texture,theta=0.20,0.2,,388960.0,10.0817,10.0,0.081681,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.05,low_texture,theta=0.40,0.4,,194480.0,10.1634,10.0,0.163363,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,50,0.05,low_texture,theta=0.05,0.05,,1555840.0,32.0102,32.0,0.01021,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.05,low_texture,theta=0.10,0.1,,777920.0,32.0204,32.0,0.020421,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.05,low_texture,theta=0.20,0.2,,388960.0,32.0408,32.0,0.040841,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.05,low_texture,theta=0.40,0.4,,194480.0,32.0817,32.0,0.081681,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,50,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,50,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,50,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,50,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,50,0.4,high_texture,theta=0.05,0.05,,6286720.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.4,high_texture,theta=0.10,0.1,,3143360.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.4,high_texture,theta=0.20,0.2,,1571680.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,50,0.4,high_texture,theta=0.40,0.4,,785840.0,35.4776,19.14,16.337613,False,128x128,N/A (research)
+DAVIS346,DVS,1000,50,0.4,high_texture,theta=0.05,0.05,,6286720.0,10.2022,10.0,0.202157,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.4,high_texture,theta=0.10,0.1,,3143360.0,10.4043,10.0,0.404315,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.4,high_texture,theta=0.20,0.2,,1571680.0,10.8086,10.0,0.808629,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,50,0.4,high_texture,theta=0.40,0.4,,785840.0,11.6173,10.0,1.617259,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,50,0.4,high_texture,theta=0.05,0.05,,6286720.0,10.0825,10.0,0.082513,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.4,high_texture,theta=0.10,0.1,,3143360.0,10.165,10.0,0.165027,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.4,high_texture,theta=0.20,0.2,,1571680.0,10.3301,10.0,0.330053,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,50,0.4,high_texture,theta=0.40,0.4,,785840.0,10.6601,10.0,0.660105,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,50,0.4,high_texture,theta=0.05,0.05,,6286720.0,32.0413,32.0,0.041256,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.4,high_texture,theta=0.10,0.1,,3143360.0,32.0825,32.0,0.082513,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.4,high_texture,theta=0.20,0.2,,1571680.0,32.165,32.0,0.165027,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,50,0.4,high_texture,theta=0.40,0.4,,785840.0,32.3301,32.0,0.330053,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,100,0.05,low_texture,adaptive,,100.0,,33.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,100,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,100,0.05,low_texture,adaptive,,100.0,,210.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,100,0.05,low_texture,adaptive,,100.0,,260.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,100,0.05,low_texture,theta=0.05,0.05,,2435840.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.05,low_texture,theta=0.10,0.1,,1217920.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.05,low_texture,theta=0.20,0.2,,608960.0,22.3051,19.14,3.165069,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.05,low_texture,theta=0.40,0.4,,304480.0,25.4701,19.14,6.330139,False,128x128,N/A (research)
+DAVIS346,DVS,1000,100,0.05,low_texture,theta=0.05,0.05,,2435840.0,10.0783,10.0,0.078328,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.05,low_texture,theta=0.10,0.1,,1217920.0,10.1567,10.0,0.156655,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.05,low_texture,theta=0.20,0.2,,608960.0,10.3133,10.0,0.31331,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.05,low_texture,theta=0.40,0.4,,304480.0,10.6266,10.0,0.62662,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,100,0.05,low_texture,theta=0.05,0.05,,2435840.0,10.032,10.0,0.031971,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.05,low_texture,theta=0.10,0.1,,1217920.0,10.0639,10.0,0.063941,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.05,low_texture,theta=0.20,0.2,,608960.0,10.1279,10.0,0.127881,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.05,low_texture,theta=0.40,0.4,,304480.0,10.2558,10.0,0.255763,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,100,0.05,low_texture,theta=0.05,0.05,,2435840.0,32.016,32.0,0.015985,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.05,low_texture,theta=0.10,0.1,,1217920.0,32.032,32.0,0.031971,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.05,low_texture,theta=0.20,0.2,,608960.0,32.0639,32.0,0.063941,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.05,low_texture,theta=0.40,0.4,,304480.0,32.1279,32.0,0.127881,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,1000,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,1000,100,0.4,high_texture,adaptive,,100.0,,33.6667,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,1000,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,1000,100,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,1000,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,1000,100,0.4,high_texture,adaptive,,100.0,,210.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,1000,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,1000,100,0.4,high_texture,adaptive,,100.0,,260.3333,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,1000,100,0.4,high_texture,theta=0.05,0.05,,7166720.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.4,high_texture,theta=0.10,0.1,,3583360.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.4,high_texture,theta=0.20,0.2,,1791680.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,1000,100,0.4,high_texture,theta=0.40,0.4,,895840.0,37.7645,19.14,18.624513,False,128x128,N/A (research)
+DAVIS346,DVS,1000,100,0.4,high_texture,theta=0.05,0.05,,7166720.0,10.2305,10.0,0.230455,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.4,high_texture,theta=0.10,0.1,,3583360.0,10.4609,10.0,0.46091,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.4,high_texture,theta=0.20,0.2,,1791680.0,10.9218,10.0,0.921819,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,1000,100,0.4,high_texture,theta=0.40,0.4,,895840.0,11.8436,10.0,1.843639,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,1000,100,0.4,high_texture,theta=0.05,0.05,,7166720.0,10.0941,10.0,0.094063,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.4,high_texture,theta=0.10,0.1,,3583360.0,10.1881,10.0,0.188127,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.4,high_texture,theta=0.20,0.2,,1791680.0,10.3763,10.0,0.376253,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,1000,100,0.4,high_texture,theta=0.40,0.4,,895840.0,10.7525,10.0,0.752505,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,1000,100,0.4,high_texture,theta=0.05,0.05,,7166720.0,32.047,32.0,0.047031,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.4,high_texture,theta=0.10,0.1,,3583360.0,32.0941,32.0,0.094063,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.4,high_texture,theta=0.20,0.2,,1791680.0,32.1881,32.0,0.188127,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,1000,100,0.4,high_texture,theta=0.40,0.4,,895840.0,32.3763,32.0,0.376253,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,25,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,25,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,25,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,25,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,25,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,25,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,25,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,25,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,25,0.05,low_texture,theta=0.05,0.05,,2231680.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.05,low_texture,theta=0.10,0.1,,1115840.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.05,low_texture,theta=0.20,0.2,,557920.0,22.0398,19.14,2.899789,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.05,low_texture,theta=0.40,0.4,,278960.0,24.9396,19.14,5.799579,False,128x128,N/A (research)
+DAVIS346,DVS,2000,25,0.05,low_texture,theta=0.05,0.05,,2231680.0,10.0718,10.0,0.071763,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.05,low_texture,theta=0.10,0.1,,1115840.0,10.1435,10.0,0.143525,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.05,low_texture,theta=0.20,0.2,,557920.0,10.287,10.0,0.28705,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.05,low_texture,theta=0.40,0.4,,278960.0,10.5741,10.0,0.5741,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,25,0.05,low_texture,theta=0.05,0.05,,2231680.0,10.0293,10.0,0.029291,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.05,low_texture,theta=0.10,0.1,,1115840.0,10.0586,10.0,0.058581,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.05,low_texture,theta=0.20,0.2,,557920.0,10.1172,10.0,0.117163,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.05,low_texture,theta=0.40,0.4,,278960.0,10.2343,10.0,0.234327,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,25,0.05,low_texture,theta=0.05,0.05,,2231680.0,32.0146,32.0,0.014646,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.05,low_texture,theta=0.10,0.1,,1115840.0,32.0293,32.0,0.029291,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.05,low_texture,theta=0.20,0.2,,557920.0,32.0586,32.0,0.058581,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.05,low_texture,theta=0.40,0.4,,278960.0,32.1172,32.0,0.117163,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,25,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,25,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,25,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,25,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,25,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,25,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,25,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,25,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,25,0.4,high_texture,theta=0.05,0.05,,11693440.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.4,high_texture,theta=0.10,0.1,,5846720.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.4,high_texture,theta=0.20,0.2,,2923360.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,25,0.4,high_texture,theta=0.40,0.4,,1461680.0,39.93,19.14,20.79,True,128x128,N/A (research)
+DAVIS346,DVS,2000,25,0.4,high_texture,theta=0.05,0.05,,11693440.0,10.376,10.0,0.376017,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.4,high_texture,theta=0.10,0.1,,5846720.0,10.752,10.0,0.752034,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.4,high_texture,theta=0.20,0.2,,2923360.0,11.5041,10.0,1.504069,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,25,0.4,high_texture,theta=0.40,0.4,,1461680.0,13.0081,10.0,3.008137,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,25,0.4,high_texture,theta=0.05,0.05,,11693440.0,10.1535,10.0,0.153477,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.4,high_texture,theta=0.10,0.1,,5846720.0,10.307,10.0,0.306953,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.4,high_texture,theta=0.20,0.2,,2923360.0,10.6139,10.0,0.613905,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,25,0.4,high_texture,theta=0.40,0.4,,1461680.0,11.2278,10.0,1.227811,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,25,0.4,high_texture,theta=0.05,0.05,,11693440.0,32.0767,32.0,0.076738,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.4,high_texture,theta=0.10,0.1,,5846720.0,32.1535,32.0,0.153477,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.4,high_texture,theta=0.20,0.2,,2923360.0,32.307,32.0,0.306953,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,25,0.4,high_texture,theta=0.40,0.4,,1461680.0,32.6139,32.0,0.613905,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,50,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,50,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,50,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,50,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,50,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,50,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,50,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,50,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,50,0.05,low_texture,theta=0.05,0.05,,3111680.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.05,low_texture,theta=0.10,0.1,,1555840.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.05,low_texture,theta=0.20,0.2,,777920.0,23.1832,19.14,4.043239,False,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.05,low_texture,theta=0.40,0.4,,388960.0,27.2265,19.14,8.086479,False,128x128,N/A (research)
+DAVIS346,DVS,2000,50,0.05,low_texture,theta=0.05,0.05,,3111680.0,10.1001,10.0,0.10006,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.05,low_texture,theta=0.10,0.1,,1555840.0,10.2001,10.0,0.20012,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.05,low_texture,theta=0.20,0.2,,777920.0,10.4002,10.0,0.40024,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.05,low_texture,theta=0.40,0.4,,388960.0,10.8005,10.0,0.80048,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,50,0.05,low_texture,theta=0.05,0.05,,3111680.0,10.0408,10.0,0.040841,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.05,low_texture,theta=0.10,0.1,,1555840.0,10.0817,10.0,0.081681,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.05,low_texture,theta=0.20,0.2,,777920.0,10.1634,10.0,0.163363,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.05,low_texture,theta=0.40,0.4,,388960.0,10.3267,10.0,0.326727,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,50,0.05,low_texture,theta=0.05,0.05,,3111680.0,32.0204,32.0,0.020421,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.05,low_texture,theta=0.10,0.1,,1555840.0,32.0408,32.0,0.040841,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.05,low_texture,theta=0.20,0.2,,777920.0,32.0817,32.0,0.081681,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.05,low_texture,theta=0.40,0.4,,388960.0,32.1634,32.0,0.163363,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,50,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,50,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,50,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,50,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,50,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,50,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,50,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,50,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,50,0.4,high_texture,theta=0.05,0.05,,12573440.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.4,high_texture,theta=0.10,0.1,,6286720.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.4,high_texture,theta=0.20,0.2,,3143360.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,50,0.4,high_texture,theta=0.40,0.4,,1571680.0,39.93,19.14,20.79,True,128x128,N/A (research)
+DAVIS346,DVS,2000,50,0.4,high_texture,theta=0.05,0.05,,12573440.0,10.3859,10.0,0.385875,True,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.4,high_texture,theta=0.10,0.1,,6286720.0,10.8086,10.0,0.808629,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.4,high_texture,theta=0.20,0.2,,3143360.0,11.6173,10.0,1.617259,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,50,0.4,high_texture,theta=0.40,0.4,,1571680.0,13.2345,10.0,3.234517,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,50,0.4,high_texture,theta=0.05,0.05,,12573440.0,10.165,10.0,0.165027,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.4,high_texture,theta=0.10,0.1,,6286720.0,10.3301,10.0,0.330053,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.4,high_texture,theta=0.20,0.2,,3143360.0,10.6601,10.0,0.660105,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,50,0.4,high_texture,theta=0.40,0.4,,1571680.0,11.3202,10.0,1.320211,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,50,0.4,high_texture,theta=0.05,0.05,,12573440.0,32.0825,32.0,0.082513,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.4,high_texture,theta=0.10,0.1,,6286720.0,32.165,32.0,0.165027,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.4,high_texture,theta=0.20,0.2,,3143360.0,32.3301,32.0,0.330053,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,50,0.4,high_texture,theta=0.40,0.4,,1571680.0,32.6601,32.0,0.660105,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,100,0.05,low_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,100,0.05,low_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,100,0.05,low_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,100,0.05,low_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,100,0.05,low_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,100,0.05,low_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,100,0.05,low_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,100,0.05,low_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,100,0.05,low_texture,theta=0.05,0.05,,4871680.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.05,low_texture,theta=0.10,0.1,,2435840.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.05,low_texture,theta=0.20,0.2,,1217920.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.05,low_texture,theta=0.40,0.4,,608960.0,31.8003,19.14,12.660279,False,128x128,N/A (research)
+DAVIS346,DVS,2000,100,0.05,low_texture,theta=0.05,0.05,,4871680.0,10.1567,10.0,0.156655,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.05,low_texture,theta=0.10,0.1,,2435840.0,10.3133,10.0,0.31331,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.05,low_texture,theta=0.20,0.2,,1217920.0,10.6266,10.0,0.62662,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.05,low_texture,theta=0.40,0.4,,608960.0,11.2532,10.0,1.25324,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,100,0.05,low_texture,theta=0.05,0.05,,4871680.0,10.0639,10.0,0.063941,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.05,low_texture,theta=0.10,0.1,,2435840.0,10.1279,10.0,0.127881,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.05,low_texture,theta=0.20,0.2,,1217920.0,10.2558,10.0,0.255763,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.05,low_texture,theta=0.40,0.4,,608960.0,10.5115,10.0,0.511527,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,100,0.05,low_texture,theta=0.05,0.05,,4871680.0,32.032,32.0,0.031971,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.05,low_texture,theta=0.10,0.1,,2435840.0,32.0639,32.0,0.063941,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.05,low_texture,theta=0.20,0.2,,1217920.0,32.1279,32.0,0.127881,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.05,low_texture,theta=0.40,0.4,,608960.0,32.2558,32.0,0.255763,False,1280x720,"~$3,500 (EVK4 kit)"
+OV7251 (OmniVision),CIS,2000,100,0.4,high_texture,locked,,800.0,,40.0,,,False,640x480,~$3-5
+OV7251 (OmniVision),CIS,2000,100,0.4,high_texture,adaptive,,120.0,,40.0,,,False,640x480,~$3-5
+IMX327 (Sony),CIS,2000,100,0.4,high_texture,locked,,800.0,,300.0,,,False,1920x1080,~$15-25
+IMX327 (Sony),CIS,2000,100,0.4,high_texture,adaptive,,60.0,,300.0,,,False,1920x1080,~$15-25
+AR0234 (ON Semi),CIS,2000,100,0.4,high_texture,locked,,800.0,,250.0,,,False,1920x1200,~$20-40
+AR0234 (ON Semi),CIS,2000,100,0.4,high_texture,adaptive,,120.0,,250.0,,,False,1920x1200,~$20-40
+IMX462 (Sony),CIS,2000,100,0.4,high_texture,locked,,800.0,,310.0,,,False,1920x1080,~$20-30
+IMX462 (Sony),CIS,2000,100,0.4,high_texture,adaptive,,120.0,,310.0,,,False,1920x1080,~$20-30
+Lichtsteiner 2008,DVS,2000,100,0.4,high_texture,theta=0.05,0.05,,14333440.0,19.4648,19.14,0.324843,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.4,high_texture,theta=0.10,0.1,,7166720.0,20.4394,19.14,1.299375,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.4,high_texture,theta=0.20,0.2,,3583360.0,24.3375,19.14,5.1975,True,128x128,N/A (research)
+Lichtsteiner 2008,DVS,2000,100,0.4,high_texture,theta=0.40,0.4,,1791680.0,39.93,19.14,20.79,True,128x128,N/A (research)
+DAVIS346,DVS,2000,100,0.4,high_texture,theta=0.05,0.05,,14333440.0,10.3859,10.0,0.385875,True,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.4,high_texture,theta=0.10,0.1,,7166720.0,10.9218,10.0,0.921819,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.4,high_texture,theta=0.20,0.2,,3583360.0,11.8436,10.0,1.843639,False,346x260,"~$3,000 (dev kit)"
+DAVIS346,DVS,2000,100,0.4,high_texture,theta=0.40,0.4,,1791680.0,13.6873,10.0,3.687277,False,346x260,"~$3,000 (dev kit)"
+Samsung DVS-Gen3.1,DVS,2000,100,0.4,high_texture,theta=0.05,0.05,,14333440.0,10.1881,10.0,0.188127,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.4,high_texture,theta=0.10,0.1,,7166720.0,10.3763,10.0,0.376253,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.4,high_texture,theta=0.20,0.2,,3583360.0,10.7525,10.0,0.752505,False,640x480,~$100-300 (module)
+Samsung DVS-Gen3.1,DVS,2000,100,0.4,high_texture,theta=0.40,0.4,,1791680.0,11.505,10.0,1.505011,False,640x480,~$100-300 (module)
+Prophesee IMX636,DVS,2000,100,0.4,high_texture,theta=0.05,0.05,,14333440.0,32.0941,32.0,0.094063,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.4,high_texture,theta=0.10,0.1,,7166720.0,32.1881,32.0,0.188127,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.4,high_texture,theta=0.20,0.2,,3583360.0,32.3763,32.0,0.376253,False,1280x720,"~$3,500 (EVK4 kit)"
+Prophesee IMX636,DVS,2000,100,0.4,high_texture,theta=0.40,0.4,,1791680.0,32.7525,32.0,0.752505,False,1280x720,"~$3,500 (EVK4 kit)"
