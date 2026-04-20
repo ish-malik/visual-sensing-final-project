@@ -1,15 +1,4 @@
-"""CIS and DVS noise simulators used by the MOT17 validation sweep.
-
-Both functions take ground truth bboxes and return noisy detections.
-The CIS path drops frames according to the requested FPS, adds motion
-blur and quantisation noise based on ADC bit depth and resolution, and
-injects a Poisson stream of background false positives. The DVS path
-runs the same kind of noise pass but uses a refractory cap and a minimum
-events per frame cutoff, and the coasting behaviour is controlled by an
-explicit flag on the config so the comparison figure can toggle it.
-
-All the knobs live on the two config dataclasses. No hidden constants.
-"""
+"""CIS/DVS simulators for Sweep B: GT bboxes → noisy detections."""
 from __future__ import annotations
 
 import os
@@ -19,35 +8,37 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
+HERE         = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(HERE)  # Sergeys-work/
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
-from unified_crossover import THETA_REF
+from models.power_crossover import THETA_REF
 
 
 @dataclass
 class CisNoiseConfig:
-    """CIS noise knobs. Defaults are calibrated from MOT17 MOG2 plus SORT runs."""
+    """Defaults tuned against MOT17 MOG2 + SORT."""
     actual_fps:              float
     resolution:              tuple[int, int]
     adc_bits:                int
-    motion_blur_fraction:    float = 0.5  # share of frame used for integration
-    bg_fp_rate_per_frame:    float = 3.0  # Poisson rate for background FPs
+    motion_blur_fraction:    float = 0.5
+    bg_fp_rate_per_frame:    float = 3.0
     fp_bbox_w_mean:          float = 80.0
     fp_bbox_h_mean:          float = 180.0
     fp_bbox_sigma_pct:       float = 0.25
-    displacement_miss_ratio: float = 2.0  # miss when per frame disp exceeds this times width
+    displacement_miss_ratio: float = 2.0  # miss when per-frame disp > this * width
 
 
 @dataclass
 class DvsNoiseConfig:
-    """DVS noise knobs. Defaults roughly match Samsung Gen3.1."""
+    """Defaults roughly match Samsung Gen3.1."""
     resolution:            tuple[int, int]
     contrast_threshold:    float = 0.20
     pixel_latency_s:       float = 20e-6
-    refractory_cap:        float = 12e6   # max events per second across array
-    min_velocity_px_s:     float = 5.0    # static objects fire no events
-    shot_noise_rate_hz:    float = 1.0    # from Ish's v2e calibration
+    refractory_cap:        float = 12e6
+    min_velocity_px_s:     float = 5.0   # static objects don't fire
+    shot_noise_rate_hz:    float = 1.0
     leak_rate_hz:          float = 0.1
     mismatch_sigma:        float = 0.03
     bg_fp_rate_per_frame:  float = 3.0
@@ -67,16 +58,7 @@ def generate_synthetic_gt(velocity_px_s: float, obj_size_px: float,
                            scene_width: int = 1920,
                            scene_height: int = 1080,
                            seed: int = 0) -> pd.DataFrame:
-    """Build a fake GT DataFrame with N objects drifting across the scene.
-
-    Each object starts at a random vertical position on the left side of
-    the frame and moves horizontally at velocity_px_s per second. The
-    result has the same column layout as ingest_mot.load_gt so the noise
-    models and SORT tracker do not know the difference.
-
-    bg_density does not shape the GT trajectories but is carried through
-    so downstream code can tell which synthetic scene produced each row.
-    """
+    """N objects drifting left-to-right. Same columns as mot17_loader.load_gt."""
     rng = np.random.default_rng(seed)
     dt = 1.0 / fps
     rows = []
@@ -100,7 +82,7 @@ def generate_synthetic_gt(velocity_px_s: float, obj_size_px: float,
 
 
 def _velocity_per_object(gt: pd.DataFrame, fps: float) -> pd.DataFrame:
-    """Tag each GT row with the object's euclidean velocity."""
+    """Per-row euclidean velocity."""
     gt = gt.sort_values(['id', 'frame']).copy()
     gt['cx'] = gt['x'] + gt['w'] / 2
     gt['cy'] = gt['y'] + gt['h'] / 2
@@ -118,7 +100,7 @@ def _inject_fps(det_rows: list, frame: int, im_w: int, im_h: int,
                 fp_bbox_w_mean: float, fp_bbox_h_mean: float,
                 fp_bbox_sigma_pct: float, rng: np.random.Generator,
                 next_id: int) -> int:
-    """Add a Poisson number of false positive boxes to this frame."""
+    """Poisson false-positive boxes for one frame."""
     n = rng.poisson(lambda_per_frame)
     for _ in range(n):
         w = max(4.0, fp_bbox_w_mean * (1.0 + rng.normal(0, fp_bbox_sigma_pct)))
@@ -136,13 +118,7 @@ def _inject_fps(det_rows: list, frame: int, im_w: int, im_h: int,
 def simulate_cis_noisy_gt(gt_df: pd.DataFrame, fps: float,
                            config: CisNoiseConfig,
                            rng: np.random.Generator) -> pd.DataFrame:
-    """Turn GT bboxes into what a CIS detector would output on those frames.
-
-    Drops frames to match the requested FPS, kills detections where the
-    object moves too far between frames, adds motion blur and ADC
-    quantisation noise to position and size, and finishes by injecting
-    background false positives.
-    """
+    """GT → CIS detections. Frame drop, motion blur, ADC noise, FPs."""
     REFERENCE_WIDTH   = 1920
     sensor_width      = config.resolution[0]
     spatial_scale     = REFERENCE_WIDTH / sensor_width
@@ -229,14 +205,10 @@ def simulate_cis_noisy_gt(gt_df: pd.DataFrame, fps: float,
 def simulate_dvs_noisy_gt(gt_df: pd.DataFrame, fps: float,
                            config: DvsNoiseConfig,
                            rng: np.random.Generator) -> pd.DataFrame:
-    """Turn GT bboxes into what a DVS detector would output on those frames.
+    """GT → DVS detections. Drops statics + refractory + sparse frames.
 
-    Drops static objects, then drops detections that hit the refractory
-    cap or fall below the minimum events per frame threshold. Adds
-    latency and resolution noise to the survivors. When coast is on, a
-    missed detection keeps emitting the last known bbox with a bit of
-    drift until coast_frames have passed. Finally injects background
-    false positives the same way the CIS path does.
+    If coast is on, missed detections keep emitting the last bbox with
+    drift until coast_frames pass.
     """
     REFERENCE_WIDTH  = 1920
     sensor_width     = config.resolution[0]
@@ -245,8 +217,8 @@ def simulate_dvs_noisy_gt(gt_df: pd.DataFrame, fps: float,
 
     MIN_EVENTS_PER_FRAME = 50
 
-    # Scale factor converts Ramaa's rate to this theta (not used for detection
-    # here -- detection is modelled via refractory saturation + min events).
+    # detection = refractory saturation + min-events gate; this just rescales
+    # Ramaa's rate to the current theta
     theta_scale = THETA_REF / max(config.contrast_threshold, 1e-6)
 
     latency_factor = np.sqrt(config.pixel_latency_s / 1e-6) * 0.05
@@ -336,7 +308,7 @@ def simulate_dvs_noisy_gt(gt_df: pd.DataFrame, fps: float,
                 })
                 frames_since_det[object_id] = coast_age
             else:
-                # no detection, no coast -> object invisible this frame
+                # no detection, no coast -> invisible this frame
                 if object_id in frames_since_det:
                     frames_since_det[object_id] = frames_since_det.get(
                         object_id, 0) + 1

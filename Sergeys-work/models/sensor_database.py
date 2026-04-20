@@ -1,36 +1,8 @@
-"""Commercial DVS and CIS sensor database with real-world specs and pricing.
+"""4 DVS + 4 CIS sensor specs from datasheets / papers.
 
-Sources:
-  DVS:
-    Lichtsteiner 2008 — "A 128x128 120dB 15us Latency Asynchronous Temporal
-        Contrast Vision Sensor", JSSC 2008, Table 1
-        https://doi.org/10.1109/JSSC.2007.914337
-
-    DAVIS346 — iniVation DAVIS346 datasheet rev 2.0 (2019)
-        https://inivation.com/wp-content/uploads/2019/08/DAVIS346.pdf
-
-    Samsung DVS-Gen3.1 — "A 640x480 Dynamic Vision Sensor with a 9um Pixel
-        and 300Meps Address-Event Representation", ISSCC 2020
-        https://www.researchgate.net/publication/314296009_41_A_640480_dynamic_vision_sensor_with_a_9m_pixel_and_300Meps_address-event_representation
-
-    Prophesee IMX636 — Sony/Prophesee IMX636 EVK4 datasheet (2022)
-        https://www.prophesee.ai/wp-content/uploads/2023/01/EVK4-HD-Prophesee-Evaluation-Kit-Camera-Manual-1.1.pdf
-
-  CIS:
-    OV7251 (OmniVision) — VGA global shutter, datasheet 2017
-        https://www.ovt.com/products/ov7251/
-
-    IMX327 (Sony) — 1080p starlight, datasheet 2018
-        https://www.1stvision.com/cameras/sensor_specs/IMX327.pdf
-
-    AR0234 (ON Semi) — automotive 1080p global shutter, datasheet 2020
-        https://www.onsemi.com/parametrics/AR0234CS/create-overview-pdf
-
-    IMX462 (Sony) — 1080p starlight high-fps, datasheet 2021
-        https://www.sony-semicon.com/files/62/flyer_security/IMX462LQR_LQR1_Flyer.pdf
-
-Prices are approximate module/dev-kit street prices (2024-2025). Bare die
-prices are 2-10x lower but not publicly available for most sensors.
+DVS: Lichtsteiner 2008 (JSSC), DAVIS346, Samsung DVS-Gen3.1 (ISSCC 2020),
+Prophesee IMX636 (EVK4). CIS: OV7251, IMX327, AR0234, IMX462. Citations
+on each entry below. Prices are dev-kit market prices
 """
 
 from __future__ import annotations
@@ -50,9 +22,9 @@ class DVSSensor:
     notes: str = ""
 
     def power_mw(self, event_rate: float) -> float:
-        """Total power given a measured event rate (events/sec)."""
+        """Total power at a given event rate (ev/s)."""
         eff_rate = min(event_rate, self.max_event_rate_mevps * 1e6)
-        dynamic = eff_rate * self.e_per_event_nj * 1e-9 * 1e3  # nJ -> mW
+        dynamic = eff_rate * self.e_per_event_nj * 1e-9 * 1e3  # nJ → mW
         return self.p_static_mw + dynamic
 
     def position_error_px(self, velocity_pxps: float) -> float:
@@ -72,7 +44,7 @@ class CISSensor:
     notes: str = ""
 
     def power_mw(self, required_fps: float) -> float:
-        """Interpolate power between idle and max-fps."""
+        """Linear interp between idle and max-fps power."""
         if required_fps <= 0:
             return self.power_idle_mw
         frac = min(required_fps / self.max_fps, 1.0)
@@ -105,7 +77,7 @@ DVS_SENSORS = [
         supply_v=3.3,  # chip: 1.8V + 3.3V, camera: 5V USB
         price_usd="~$3,000 (dev kit)",
         notes="iniVation hybrid frames+events, 18.5um pixel, 0.18um CIS. "
-              "https://inivation.com/wp-content/uploads/2019/08/DAVIS346.pdf",
+        "https://inivation.com/wp-content/uploads/2019/08/DAVIS346.pdf",
     ),
     DVSSensor(
         name="Samsung DVS-Gen3.1",
@@ -128,8 +100,8 @@ DVS_SENSORS = [
         supply_v=1.8,
         price_usd="~$3,500 (EVK4 kit)",
         notes="Sony/Prophesee 1280x720, 4.86um pixel, stacked BSI, 1/2.5in format. "
-              "https://www.prophesee.ai/wp-content/uploads/2023/01/"
-              "EVK4-HD-Prophesee-Evaluation-Kit-Camera-Manual-1.1.pdf",
+        "https://docs.prophesee.ai/stable/hw/sensors/imx636.html"
+        "EVK4-HD-Prophesee-Evaluation-Kit-Camera-Manual-1.1.pdf",
     ),
 ]
 
@@ -156,7 +128,7 @@ CIS_SENSORS = [
         adc_bits=12,
         supply_v=2.9,
         price_usd="~$15-25",
-        notes="Starvis 1080p, surveillance. https://www.sony-semicon.com/files/62/pdf/p-13_IMX327LQR_Flyer.pdf",
+        notes="Starvis 1080p, surveillance. https://www.sony-semicon.com/files/62/flyer_security/IMX327LQR_LQR1_Flyer.pdf",
     ),
     CISSensor(
         name="AR0234 (ON Semi)",
@@ -178,13 +150,13 @@ CIS_SENSORS = [
         adc_bits=12,
         supply_v=2.9,
         price_usd="~$20-30",
-        notes="Starvis 2 high-fps 1080p. https://www.sony-semicon.com/files/62/pdf/p-13_IMX462LQR_Flyer.pdf",
+        notes="Starvis 2 high-fps 1080p. https://www.sony-semicon.com/files/62/flyer_security/IMX462LQR_LQR1_Flyer.pdf",
     ),
 ]
 
 
 def print_sensor_table():
-    """Print a formatted summary of all sensors."""
+    """Dump all sensors to stdout."""
     print("=" * 100)
     print("DVS SENSORS")
     print("=" * 100)

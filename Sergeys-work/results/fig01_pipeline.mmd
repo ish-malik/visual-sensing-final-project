@@ -1,9 +1,3 @@
-# Pipeline Architecture
-
-A scene description flows left-to-right through sensor models into power
-numbers and tracking scores, feeding every figure in the deck.
-
-```mermaid
 flowchart LR
     subgraph Scene ["Scene inputs"]
         R["object velocity<br/>object size<br/>background clutter"]
@@ -88,13 +82,3 @@ flowchart LR
     style Analyt   fill:#e6efff,stroke:#1c54a6,color:#0a1f40
     style Bench    fill:#fde5df,stroke:#a02d1c,color:#3b0f0a
     style Out      fill:#fff0c5,stroke:#ac6f00,color:#2e1e00
-```
-
-**Color legend** — green = scene inputs, yellow = what the scene asks each
-sensor to do (event rate for DVS, frame rate for CIS), gray = datasheet
-specs, purple = per-sensor power formulas, blue = analytical power study
-(feeds the crossover plot), salmon = tracking benchmark (feeds the three
-MOT17-based plots), gold = figures shown in the deck.
-
-The diagram renders in GitHub and VS Code preview. For a PNG, paste the
-code block into `mermaid.live`.

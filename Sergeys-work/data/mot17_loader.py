@@ -1,7 +1,4 @@
-"""Load MOT17 sequences (frames, ground truth, detections).
-
-Layout: MOT17/train/<seq>/ with img1/, gt/gt.txt, det/det.txt, seqinfo.ini
-"""
+"""MOT17 input/output. Layout: MOT17/train/<seq>/{img1,gt,det,seqinfo.ini}."""
 
 from __future__ import annotations
 
@@ -44,9 +41,13 @@ def load_seqinfo(seq_dir: str) -> SeqInfo:
     )
 
 
-def iter_frames(info: SeqInfo, max_frames: int | None = None) -> Iterator[tuple[int, np.ndarray]]:
-    """Yield (frame_idx, BGR image). frame_idx is 1-based to match MOT17."""
-    num_frames = info.seq_length if max_frames is None else min(max_frames, info.seq_length)
+def iter_frames(
+    info: SeqInfo, max_frames: int | None = None
+) -> Iterator[tuple[int, np.ndarray]]:
+    """(frame_idx, BGR). frame_idx is 1-based per MOT17 convention."""
+    num_frames = (
+        info.seq_length if max_frames is None else min(max_frames, info.seq_length)
+    )
     for frame_num in range(1, num_frames + 1):
         path = os.path.join(info.img_dir, f"{frame_num:06d}.jpg")
         img = cv2.imread(path, cv2.IMREAD_COLOR)
@@ -56,10 +57,7 @@ def iter_frames(info: SeqInfo, max_frames: int | None = None) -> Iterator[tuple[
 
 
 def load_gt(info: SeqInfo) -> pd.DataFrame:
-    """Return ground-truth dataframe with columns: frame, id, x, y, w, h, conf, cls, vis.
-
-    Filtered to pedestrians (cls==1) with conf==1 per MOT17 convention.
-    """
+    """GT dataframe filtered to pedestrians (cls=1, conf=1)."""
     cols = ["frame", "id", "x", "y", "w", "h", "conf", "cls", "vis"]
     df = pd.read_csv(info.gt_path, header=None, names=cols)
     df = df[(df["cls"] == 1) & (df["conf"] == 1)].reset_index(drop=True)
@@ -67,17 +65,14 @@ def load_gt(info: SeqInfo) -> pd.DataFrame:
 
 
 def load_public_det(info: SeqInfo) -> pd.DataFrame:
-    """Load the provided public detections (DPM/FRCNN/SDP depending on subseq).
-
-    Columns: frame, id(-1), x, y, w, h, conf.
-    """
+    """MOT17 public detections (DPM/FRCNN/SDP depending on subseq)."""
     cols = ["frame", "id", "x", "y", "w", "h", "conf"]
     df = pd.read_csv(info.det_path, header=None, usecols=range(7), names=cols)
     return df
 
 
 def find_sequences(mot_root: str, split: str = "train") -> list[str]:
-    """Return sequence directory paths under MOT17/<split>/."""
+    """Sequence paths under MOT17/<split>/."""
     split_dir = os.path.join(mot_root, split)
     if not os.path.isdir(split_dir):
         return []

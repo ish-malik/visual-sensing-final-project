@@ -1,17 +1,4 @@
-"""Runs Sweep A and Sweep B and writes the two result CSVs to results/.
-
-Sweep A is a forward call to unified_crossover.run_sweep_a, closed form,
-under a second. Sweep B runs each sensor plus operating point
-configuration through the noise simulators, SORT and the HOTA metrics,
-spread across a process pool. Every row has a source tag so we can
-compare real MOT17 video against the synthetic scene model side by side.
-
-For MOT17, the source is MOT17-04-SDP and every DVS config runs twice,
-once with coasting off and once with it on. For synthetic, we generate
-trajectories at two background densities (low and high) using the scene
-generator in noise_models, run the same sensor grid through them, and
-skip the coasting repeat to keep the total count bounded.
-"""
+"""Sweep A + Sweep B driver. Writes both CSVs into results/."""
 from __future__ import annotations
 
 import argparse
@@ -31,8 +18,8 @@ except Exception:
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-from sensor_database import DVS_SENSORS, CIS_SENSORS
-from unified_crossover import run_sweep_a
+from models.sensor_database import DVS_SENSORS, CIS_SENSORS
+from models.power_crossover import run_sweep_a
 
 
 MOT17_SEQ_DIR = os.path.join(HERE, 'MOT17', 'train', 'MOT17-04-SDP')
@@ -41,22 +28,21 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 
 def _run_one_sweep_b(config: dict) -> dict:
-    """One sensor, operating point, coast flag, seed run. Pickleable for the pool."""
+    """One (sensor, op-point, coast, seed) run. Must be pickleable."""
     import sys as _sys
     here = config['here']
     _sys.path.insert(0, here)
 
     import numpy as _np
 
-    from ingest_mot import load_seqinfo, load_gt
-    from fast_sort import Sort
-    from evaluate_tracking import tracks_to_df, evaluate as evaluate_mota
-    from metrics_hota import compute_hota
-    from noise_models import (
+    from data.mot17_loader import load_seqinfo, load_gt
+    from data.sensor_simulators import (
         CisNoiseConfig, DvsNoiseConfig,
         simulate_cis_noisy_gt, simulate_dvs_noisy_gt,
         generate_synthetic_gt,
     )
+    from evaluation.sort_tracker import Sort
+    from evaluation.tracking_metrics import compute_hota, evaluate_mota, tracks_to_df
 
     source = config.get('source', 'mot17')
     if source == 'mot17':
@@ -86,13 +72,12 @@ def _run_one_sweep_b(config: dict) -> dict:
         cfg = CisNoiseConfig(**config['cfg_kwargs'])
         dets = simulate_cis_noisy_gt(gt_sub, fps, cfg, rng)
 
-    # Feed detections into SORT. Group by frame for fast lookup.
     det_by_frame: dict[int, _np.ndarray] = {}
     if len(dets):
         for frame_key, grp in dets.groupby('frame'):
             det_by_frame[int(frame_key)] = grp[['x', 'y', 'w', 'h']].to_numpy()
 
-    tracker = Sort(max_age=5, min_hits=3, iou_threshold=0.3, color_gate=0.0)
+    tracker = Sort(max_age=5, min_hits=3, iou_threshold=0.3)
     tracks_per_frame = []
     for frame_num in range(1, config['max_frames'] + 1):
         frame_dets = det_by_frame.get(frame_num, _np.empty((0, 4)))
@@ -136,7 +121,7 @@ def _build_one_source(source_label: str, synth_scene: dict | None,
                        include_coast_on: bool) -> list[dict]:
     configs = []
     dvs_thetas = [0.05, 0.10, 0.20, 0.40]
-    cis_fps_grid = [5, 15, 30, None]  # None means sensor.max_fps
+    cis_fps_grid = [5, 15, 30, None]  # None = sensor.max_fps
     dvs_fp_rate = fp_calibration.get('dvs_fp_rate', 2.0)
     cis_fp_rate = fp_calibration.get('cis_fp_rate', 2.5)
 
@@ -202,12 +187,12 @@ def _build_one_source(source_label: str, synth_scene: dict | None,
 def _build_sweep_b_configs(max_frames: int, num_seeds: int,
                             fp_calibration: dict) -> list[dict]:
     configs = []
-    # MOT17 source: full seeds and coasting on plus off
+    # MOT17: full seed count, coasting on and off
     configs += _build_one_source(
         'mot17', None, max_frames, num_seeds,
         fp_calibration, include_coast_on=True,
     )
-    # Synthetic sources: 3 seeds each, 300 frames, no coast variant
+    # Synthetic: 3 seeds, 300 frames, coast off only
     for scene in SYNTHETIC_SCENES:
         configs += _build_one_source(
             scene['label'], scene, 300, min(num_seeds, 3),
