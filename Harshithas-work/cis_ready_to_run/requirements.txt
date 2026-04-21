@@ -1,0 +1,24 @@
+# Requirements for Harshitha's CIS modeling scripts
+# Python 3.10+ recommended
+#
+# Install all dependencies with:
+#   pip install -r requirements.txt
+
+# Core scientific stack
+numpy>=1.24.0
+pandas>=1.5.0
+matplotlib>=3.6.0
+
+# Computer vision
+opencv-python>=4.7.0
+
+# -------------------------------------------------------
+# LOCAL FILES REQUIRED (not pip installable):
+#
+# 1. Top_10_22_CNN_optical.py  — ModuCIS base (professor's tool)
+#    Already included in cis_ready_to_run/ folder
+#
+# 2. fast_sort.py  — SORT tracker implementation
+#    Copy from Sergeys-work/ folder into:
+#    cis_ready_to_run/CIS_Model/Use_cases/CIS_real_video/
+# -------------------------------------------------------
