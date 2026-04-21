@@ -246,19 +246,53 @@ MOG2 + SORT pipeline on **100 frames of MOT17-04-SDP**. Same hyperparameters thr
 
 ---
 
+
+
 ## How to Run
-
+ 
+> **Download the folder:** `cis_ready_to_run/` from this repo and run from there.
+ 
+All scripts live inside:
+```
+cis_ready_to_run/
+└── Spring-2026-ModuCIS-modeling-main/
+    └── ModuCIS.-CIS-modeling-main/
+        └── ModuCIS.-CIS-modeling-main/
+            └── CIS_Model/
+                └── Use_cases/
+                    ├── final_cis_complete1.py       ← run from here
+                    └── CIS_real_video/
+                        ├── cis_real_video.py
+                        ├── cis_noise_tracking.py
+                        ├── cis_pixel_comparison.py
+                        └── cis_detector.py          ← helper, do not run directly
+```
+ 
+**Step 1 — Install dependencies:**
 ```bash
-cd Harshithas-work/cis_model/
-
-python final_cis_complete1.py      # synthetic parametric sweep
+pip install -r requirements.txt
+```
+ 
+**Step 2 — Run synthetic parametric sweep:**
+```bash
+cd cis_ready_to_run/Spring-2026-ModuCIS-modeling-main/ModuCIS.-CIS-modeling-main/ModuCIS.-CIS-modeling-main/CIS_Model/Use_cases/
+ 
+python final_cis_complete1.py
+```
+ 
+**Step 3 — Run real-world noise + tracking scripts:**
+```bash
+cd cis_ready_to_run/Spring-2026-ModuCIS-modeling-main/ModuCIS.-CIS-modeling-main/ModuCIS.-CIS-modeling-main/CIS_Model/Use_cases/CIS_real_video/
+ 
 python cis_real_video.py           # MOT17 noise characterization
 python cis_noise_tracking.py       # clean vs noisy tracking benchmark
 python cis_pixel_comparison.py     # pixel-level noise figures
 ```
-
-> `cis_detector.py` is a helper module — do not run directly.  
-> `cis_real_video.py` and `cis_noise_tracking.py` require MOT17-04-SDP frames available locally.
+ 
+> **Note:** `cis_real_video.py` and `cis_noise_tracking.py` require MOT17-04-SDP frames available locally. Place the frames in the correct data path before running.  
+> `cis_detector.py` is a helper module — it does not need to be run directly.
+ 
+---
 
 ---
 
