@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 SCENE_MODEL_PATH = os.path.abspath(os.path.join(
     os.path.dirname(__file__),
-    '..', 'Remaas-work'
+    '..', '..', 'Ramaas-work'
 ))
 sys.path.insert(0, SCENE_MODEL_PATH)
 
@@ -311,44 +311,39 @@ def run_all_scenes() -> pd.DataFrame:
 def plot_pixel_breakdown(df, out_dir):
     # Worst-case velocity: DVS fires the most events here, making the active fraction
     # as large as possible — this is the hardest scenario for DVS power efficiency.
-    # Using max(VELOCITY_SEQUENCE) to capture the extended range (2000 px/s).
     worst_vel = max(VELOCITY_SEQUENCE)
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
-    for ax, (bg_name, bg_df) in zip(axes, df.groupby('background')):
-        # Pixel breakdown computed directly since worst_vel may exceed scene model velocities
-        bg_density = backgrounds[bg_name]
-        px = compute_pixel_breakdown(50, bg_density, worst_vel)
-        n_active   = px['n_active_pixels']
-        n_silent   = px['n_silent_pixels']
-        n_total    = px['n_total_pixels']
-        pct_active = px['active_fraction'] * 100
-        pct_silent = 100 - pct_active
+    fig, ax = plt.subplots(figsize=(7, 6))
+    bg_density = backgrounds['high_texture']
+    px = compute_pixel_breakdown(50, bg_density, worst_vel)
+    n_active   = px['n_active_pixels']
+    n_silent   = px['n_silent_pixels']
+    n_total    = px['n_total_pixels']
+    pct_active = px['active_fraction'] * 100
+    pct_silent = 100 - pct_active
 
-        wedges, _ = ax.pie(
-            [n_silent, n_active],
-            colors=['steelblue', 'tomato'],
-            startangle=90,
-            wedgeprops=dict(width=0.45),   # donut width
-        )
-        # centre text — big percentage
-        ax.text(0, 0.12, f'{pct_silent:.2f}%', ha='center', va='center',
-                fontsize=16, fontweight='bold', color='steelblue')
-        ax.text(0, -0.18, 'silent', ha='center', va='center',
-                fontsize=10, color='steelblue')
+    wedges, _ = ax.pie(
+        [n_silent, n_active],
+        colors=['steelblue', 'tomato'],
+        startangle=90,
+        wedgeprops=dict(width=0.45),
+    )
+    ax.text(0, 0.12, f'{pct_silent:.2f}%', ha='center', va='center',
+            fontsize=16, fontweight='bold', color='steelblue')
+    ax.text(0, -0.18, 'silent', ha='center', va='center',
+            fontsize=10, color='steelblue')
 
-        # actual numbers below the donut
-        ax.text(0, -0.72,
-                f'Silent:  {n_silent:,} px\nActive:  {n_active:,} px\nTotal:   {n_total:,} px',
-                ha='center', va='center', fontsize=9,
-                bbox=dict(boxstyle='round,pad=0.4', facecolor='#f5f5f5', edgecolor='#cccccc'))
+    ax.text(0, -0.72,
+            f'Silent:  {n_silent:,} px\nActive:  {n_active:,} px\nTotal:   {n_total:,} px',
+            ha='center', va='center', fontsize=9,
+            bbox=dict(boxstyle='round,pad=0.4', facecolor='#f5f5f5', edgecolor='#cccccc'))
 
-        ax.set_title(f'{bg_name}\n(velocity = {worst_vel} px/s)', fontsize=11, fontweight='bold')
-        ax.legend(wedges, [f'Silent ({pct_silent:.2f}%)', f'Active ({pct_active:.3f}%)'],
-                  loc='upper right', fontsize=8)
+    ax.set_title(f'high_texture\n(velocity = {worst_vel} px/s)', fontsize=11, fontweight='bold')
+    ax.legend(wedges, [f'Silent ({pct_silent:.2f}%)', f'Active ({pct_active:.3f}%)'],
+              loc='upper right', fontsize=8)
 
     plt.suptitle('DVS: Active vs Silent Pixels at Worst-Case Velocity\n'
-                 'Static power covers ALL pixels - active fraction is tiny',
+                 'Static power covers ALL pixels — active fraction is tiny',
                  fontweight='bold')
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'dvs_pixel_breakdown.png'), dpi=200)
@@ -392,48 +387,40 @@ def get_cis_worst_case_power_mw() -> float | None:
 
 def plot_temporal_variation(df_temporal, out_dir):
     cis_mw = get_cis_worst_case_power_mw()
-    fig, axes = plt.subplots(2, 1, figsize=(8, 10), sharey=False)
+    fig, ax = plt.subplots(figsize=(8, 5))
 
-    ymin_by_bg = {'high_texture': 53.92, 'low_texture': 53.98}
-    ymax_by_bg = {'high_texture': 54.6,  'low_texture': 54.14}
-    for ax, (bg_name, bg_df) in zip(axes, df_temporal.groupby('background')):
-        bg_df      = bg_df.sort_values('time_s')
-        p_static   = bg_df['power_static_mW'].iloc[0]
-        p_total    = bg_df['power_total_mW']
+    bg_df = df_temporal[df_temporal['background'] == 'high_texture'].sort_values('time_s')
+    p_static = bg_df['power_static_mW'].iloc[0]
+    p_total  = bg_df['power_total_mW']
 
-        ax.plot(bg_df['time_s'], p_total,
-                marker='o', color='#2255AA', linewidth=2.5, label='DVS total power')
-        # Fill only the dynamic component above the static floor
-        ax.fill_between(bg_df['time_s'], p_static, p_total,
-                        alpha=0.30, color='#2255AA', label='Dynamic component')
-        ax.axhline(y=p_static, color='steelblue', linewidth=1.5,
-                   linestyle=':', label='Static floor (53.99 mW)')
+    ax.plot(bg_df['time_s'], p_total,
+            marker='o', color='#2255AA', linewidth=2.5, label='DVS total power')
+    ax.fill_between(bg_df['time_s'], p_static, p_total,
+                    alpha=0.30, color='#2255AA', label='Dynamic component')
+    ax.axhline(y=p_static, color='steelblue', linewidth=1.5,
+               linestyle=':', label='Static floor (53.99 mW)')
 
-        for _, r in bg_df.iterrows():
-            ax.annotate(f"{int(r['velocity_px_s'])}px/s",
-                        (r['time_s'], r['power_total_mW']),
-                        textcoords='offset points', xytext=(0, 8),
-                        fontsize=7, ha='center')
+    for _, r in bg_df.iterrows():
+        ax.annotate(f"{int(r['velocity_px_s'])}px/s",
+                    (r['time_s'], r['power_total_mW']),
+                    textcoords='offset points', xytext=(0, 8),
+                    fontsize=7, ha='center')
 
-        if cis_mw is not None:
-            dvs_max = p_total.max()
-            if cis_mw <= dvs_max * 1.3:
-                ax.axhline(y=cis_mw, color='orange', linewidth=2, linestyle='--',
-                           label=f'CIS power (fixed @ {cis_mw:.1f} mW)')
-            else:
-                ax.annotate(f'CIS power: {cis_mw:.1f} mW (above chart)',
-                            xy=(0.02, 0.95), xycoords='axes fraction',
-                            fontsize=8, color='black',
-                            bbox=dict(boxstyle='round', facecolor='#fff8e7', edgecolor='orange'))
+    if cis_mw is not None:
+        dvs_max = p_total.max()
+        if cis_mw <= dvs_max * 1.3:
+            ax.axhline(y=cis_mw, color='orange', linewidth=2, linestyle='--',
+                       label=f'CIS power (fixed @ {cis_mw:.1f} mW)')
+        else:
+            ax.annotate(f'CIS power: {cis_mw:.1f} mW (above chart)',
+                        xy=(0.02, 0.95), xycoords='axes fraction',
+                        fontsize=8, color='black',
+                        bbox=dict(boxstyle='round', facecolor='#fff8e7', edgecolor='orange'))
 
-        ax.annotate('Note: y-axis range differs between high- and low-texture plots',
-                    xy=(0.05, 0.02), xycoords='axes fraction',
-                    fontsize=9, color='black', style='italic')
-
-        ax.set_ylim(bottom=ymin_by_bg.get(bg_name), top=ymax_by_bg.get(bg_name))
-        ax.set(title=f'DVS Power Over Time ({bg_name})',
-               xlabel='Time (s)', ylabel='Power (mW)')
-        ax.legend(fontsize=8); ax.grid(True)
+    ax.set_ylim(bottom=53.92, top=54.6)
+    ax.set(title='DVS Power Over Time (high_texture)',
+           xlabel='Time (s)', ylabel='Power (mW)')
+    ax.legend(fontsize=8); ax.grid(True)
 
     plt.suptitle('DVS: Temporal Variation (power tracks scene activity)\n'
                  'Shaded area = dynamic power above static floor',
@@ -446,12 +433,11 @@ def plot_temporal_variation(df_temporal, out_dir):
 
 def plot_pixelwise_vs_analytical(df, out_dir):
     """
-    Side-by-side comparison of pixelwise vs analytical event rates.
-    Shows how the per-pixel d_ln_I model differs from the analytical formula
-    and how threshold theta controls how many pixels fire.
-    Only med_threshold (theta=0.20) shown to keep the plot readable; object size=50.
+    Vertically stacked comparison of pixelwise vs analytical event rates
+    for both backgrounds. Shows how the per-pixel d_ln_I model differs from
+    the analytical formula. Only med_threshold (theta=0.20); object size=50.
     """
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=False)
+    fig, axes = plt.subplots(2, 1, figsize=(8, 10), sharey=False)
 
     sub = df[(df['threshold_name'] == 'med_threshold') &
              (df['object_size_px'] == 50)]
@@ -462,7 +448,7 @@ def plot_pixelwise_vs_analytical(df, out_dir):
                 marker='o', linestyle='--', color='gray',  label='Analytical (Ramaa formula)')
         ax.plot(bg_df['velocity_px_s'], bg_df['event_rate_pixelwise'],
                 marker='s', linestyle='-',  color='#2255AA', label='Pixelwise |d_ln_I| ≥ θ')
-        ax.set(title=f'Event Rate: Pixelwise vs Analytical\n({bg_name}, θ=0.20)',
+        ax.set(title=f'Event Rate: Pixelwise vs Analytical ({bg_name}, θ=0.20)',
                xlabel='Velocity (px/s)', ylabel='Event Rate (events/sec)')
         ax.legend(); ax.grid(True)
 
@@ -475,21 +461,16 @@ def plot_pixelwise_vs_analytical(df, out_dir):
 
 
 def plot_power_vs_velocity(df, out_dir):
-    fig, axes = plt.subplots(2, 1, figsize=(8, 10), sharey=False)
-    for ax, (bg_name, bg_df) in zip(axes, df.groupby('background')):
-        for th_name, th_df in bg_df.groupby('threshold_name'):
-            sub = th_df[th_df['object_size_px'] == 50].sort_values('velocity_px_s')
-            ax.plot(sub['velocity_px_s'], sub['power_total_mW'], marker='o', label=th_name)
-        y_lo, y_hi = ax.get_ylim()
-        ax.set_ylim(bottom=y_lo - (y_hi - y_lo) * 0.1)
-        if bg_name == 'low_texture':
-            ax.annotate('Threshold lines overlap: static power\ndominates, dynamic variation < 0.04 mW',
-                        xy=(0.98, 0.05), xycoords='axes fraction', ha='right',
-                        fontsize=8, color='black',
-                        bbox=dict(boxstyle='round', facecolor='#f5f5f5', edgecolor='#cccccc'))
-        ax.set(title=f'DVS Power vs Velocity ({bg_name})',
-               xlabel='Velocity (px/s)', ylabel='DVS Total Power (mW)')
-        ax.legend(); ax.grid(True)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    bg_df = df[df['background'] == 'high_texture']
+    for th_name, th_df in bg_df.groupby('threshold_name'):
+        sub = th_df[th_df['object_size_px'] == 50].sort_values('velocity_px_s')
+        ax.plot(sub['velocity_px_s'], sub['power_total_mW'], marker='o', label=th_name)
+    y_lo, y_hi = ax.get_ylim()
+    ax.set_ylim(bottom=y_lo - (y_hi - y_lo) * 0.1)
+    ax.set(title='DVS Power vs Velocity (high_texture)',
+           xlabel='Velocity (px/s)', ylabel='DVS Total Power (mW)')
+    ax.legend(); ax.grid(True)
     plt.suptitle('DVS: Power vs Velocity', fontweight='bold')
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'dvs_power_vs_velocity.png'), dpi=200)
@@ -512,20 +493,16 @@ def plot_power_vs_background(df, out_dir):
     plt.close()
 
 def plot_power_vs_threshold(df, out_dir):
-    ymax_by_bg = {'high_texture': None, 'low_texture': 54.045}
-    fig, axes = plt.subplots(2, 1, figsize=(8, 10), sharey=False)
-    for ax, (bg_name, bg_df) in zip(axes, df.groupby('background')):
-        for vel, vel_df in bg_df[bg_df['object_size_px'] == 50].groupby('velocity_px_s'):
-            sub = vel_df.sort_values('theta')
-            ax.plot(sub['theta'], sub['power_total_mW'], marker='o', label=f'{vel} px/s')
-        y_lo, y_hi = ax.get_ylim()
-        ax.set_ylim(bottom=y_lo - (y_hi - y_lo) * 0.1, top=ymax_by_bg.get(bg_name))
-        ax.annotate('Note: y-axis range differs between high- and low-texture plots',
-                    xy=(0.05, 0.02), xycoords='axes fraction',
-                    fontsize=9, color='black', style='italic')
-        ax.set(title=f'DVS Power vs Threshold ({bg_name})',
-               xlabel='Threshold θ', ylabel='DVS Total Power (mW)')
-        ax.legend(loc='upper right', fontsize=8); ax.grid(True)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    bg_df = df[df['background'] == 'high_texture']
+    for vel, vel_df in bg_df[bg_df['object_size_px'] == 50].groupby('velocity_px_s'):
+        sub = vel_df.sort_values('theta')
+        ax.plot(sub['theta'], sub['power_total_mW'], marker='o', label=f'{vel} px/s')
+    y_lo, y_hi = ax.get_ylim()
+    ax.set_ylim(bottom=y_lo - (y_hi - y_lo) * 0.1)
+    ax.set(title='DVS Power vs Threshold (high_texture)',
+           xlabel='Threshold θ', ylabel='DVS Total Power (mW)')
+    ax.legend(loc='upper right', fontsize=8); ax.grid(True)
     plt.suptitle('DVS: Power vs Threshold', fontweight='bold')
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'dvs_power_vs_threshold.png'), dpi=200)
@@ -533,7 +510,7 @@ def plot_power_vs_threshold(df, out_dir):
 
 def plot_static_vs_dynamic(df, out_dir):
     sub = df[(df['threshold_name'] == 'high_threshold') &
-             (df['background'] == 'low_texture') &
+             (df['background'] == 'high_texture') &
              (df['object_size_px'] == 50)].sort_values('velocity_px_s')
     x = sub['velocity_px_s'].astype(str)
 
@@ -561,7 +538,7 @@ def plot_static_vs_dynamic(df, out_dir):
             xlabel='Velocity (px/s)', ylabel='Dynamic Power (mW)')
     ax2.legend(); ax2.grid(True, axis='y')
 
-    plt.suptitle('DVS Power Breakdown (high_threshold, low_texture)\n'
+    plt.suptitle('DVS Power Breakdown (high_threshold, high_texture)\n'
                  'Static dominates — dynamic includes false positive waste',
                  fontweight='bold')
     plt.tight_layout()
@@ -571,7 +548,9 @@ def plot_static_vs_dynamic(df, out_dir):
 # --- Main ---
 
 if __name__ == '__main__':
-    OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dvs_results')
+    OUT_DIR = os.path.abspath(os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        '..', 'dvs_results', 'dvs-scene-model-result'))
     os.makedirs(OUT_DIR, exist_ok=True)
 
     df = run_all_scenes()
